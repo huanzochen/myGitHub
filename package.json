@@ -1,0 +1,19 @@
+{
+  "name": "jitcub-page",
+  "version": "1.0.0",
+  "description": "a page that can list your repos using github API",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/huanzochen/JitCub-page.git"
+  },
+  "author": "",
+  "license": "SEE LICENSE IN LICENSE",
+  "bugs": {
+    "url": "https://github.com/huanzochen/JitCub-page/issues"
+  },
+  "homepage": "https://github.com/huanzochen/JitCub-page#readme"
+}
