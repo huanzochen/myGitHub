@@ -5,10 +5,29 @@ import { faBell } from '@fortawesome/free-regular-svg-icons'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
 import { color } from '../../utils/color'
 
-import Avatarimg from '../../img/avatar.jpg'
+import AvatarImg from '../../img/avatar.jpg'
 
-const StyledNavbar = styled.div`
+const StyledNavBar = styled.div`
 background-color: ${color.primary};
+.icon{
+  color: ${color.second};
+  width: 17px;
+  height: 20px;
+  &.small{
+    width: 13px;
+    height: 15px;
+  }
+  &.big{
+    width: 35px;
+    height: 35px;
+  }
+  &.leftspace{
+    margin-left: 19px;
+  }
+  &.rightspace{
+    margin-right: 9px;
+  }
+}
 `
 
 const Container = styled.div`
@@ -34,24 +53,14 @@ outline:none
 const A = styled.a`
 color: ${color.second};
 font-weight:500;
-margin: 0.5em;
-padding: 0.5em;
+margin: 0.3em;
+padding: 0.3em;
 `
 
 const Profile = styled.div`
 display:flex;
 flex-direction: row;
 align-items: center;
-.icon{
-  color: ${color.second};
-  margin-left: 19px;
-  width: 17px;
-  height: 20px;
-  &.small{
-    width: 13px;
-    height: 15px;
-  }
-}
 `
 const DropDown = styled.div`
 margin-left: 5px;
@@ -62,7 +71,7 @@ border-left: 5px solid transparent;
 `
 
 const Avatar = styled.img.attrs(props => ({
-  src: Avatarimg
+  src: AvatarImg
 }))`
 margin-left: 19px;
 border-radius: 50%;
@@ -71,26 +80,26 @@ height:20px;
 `
 
 
-function Navbar() {
+function NavBar() {
   return (
-    <StyledNavbar>
+    <StyledNavBar>
       <Container>
-        <FontAwesomeIcon icon={faAndroid} />
+        <FontAwesomeIcon icon={faAndroid} className="icon big leftspace rightspace"></FontAwesomeIcon>
         <Input></Input>
-        <A>Pull requests</A>
+        <A>Pulls</A>
         <A>Issues</A>
         <A>MarketPlace</A>
         <A>Explore</A>
         <Profile>
-          <FontAwesomeIcon icon={faBell} className="icon"></FontAwesomeIcon>
-          <FontAwesomeIcon icon={faPlus} className="icon small"></FontAwesomeIcon>
+          <FontAwesomeIcon icon={faBell} className="icon leftspace"></FontAwesomeIcon>
+          <FontAwesomeIcon icon={faPlus} className="icon small leftspace"></FontAwesomeIcon>
           <DropDown></DropDown>
           <Avatar></Avatar>
           <DropDown></DropDown>
         </Profile>
       </Container>
-    </StyledNavbar>
+    </StyledNavBar>
   )
 }
 
-export default Navbar
+export default NavBar

@@ -1,5 +1,6 @@
 import styled from 'styled-components'
-import Navbar from './components/Navbar/Navbar'
+import NavBar from './components/NavBar/NavBar'
+import FunctionBar from './components/FunctionBar/FunctionBar'
 
 const StyledApp = styled.div`
 *, *::before, *::after {
@@ -10,7 +11,8 @@ const StyledApp = styled.div`
 function App() {
   return (
     <StyledApp>
-      <Navbar></Navbar>
+      <NavBar></NavBar>
+      <FunctionBar></FunctionBar>
     </StyledApp>
   )
 }

@@ -3,6 +3,7 @@ export const color = {
   primary: 'palevioletred',
   // primary: 'trasperent',
   second: 'white',
-  pink: 'palevioletred'
+  pink: 'palevioletred',
+  border: '#ebebebe1'
 
 }
