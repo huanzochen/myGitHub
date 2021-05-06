@@ -20,16 +20,19 @@ align-items: center;
 font-weight: 400;
 padding-left: 15px;
 padding-right: 15px;
+border-bottom: 2px solid ${props => {
+  // 如果遇到選擇的標籤就用 important 強制設定顏色,暫時想不到更好的解法
+    if (props.selected) return color.pink + ' !important'
+    else { return 'transparent' }
+  }};
+}; 
 .wrapper{
 margin-left:10px;
 }
-
-// 這邊要做 active 時的狀態變化, 要怎做待切版完思考
-/* .active{ */
-    border-bottom: 2px solid pink;
-/* } */
+&:hover{
+  border-bottom: 2px solid ${color.border};
+}
 `
-
 
 function FunctionBar() {
   return (
@@ -40,7 +43,7 @@ function FunctionBar() {
           <FontAwesomeIcon icon={faBookReader}></FontAwesomeIcon>
           <p className='wrapper'>Overview</p>
         </FunctionButton>
-        <FunctionButton>
+        <FunctionButton selected={true}>
           <FontAwesomeIcon icon={faFolderOpen}></FontAwesomeIcon>
           <p className='wrapper'>Repositories</p>
         </FunctionButton>
