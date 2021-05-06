@@ -5,8 +5,10 @@ import { faBell } from '@fortawesome/free-regular-svg-icons'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
 import { color } from '../../utils/color'
 
+import Avatarimg from '../../img/avatar.jpg'
+
 const StyledNavbar = styled.div`
-background-color: ${color.main};
+background-color: ${color.primary};
 `
 
 const Container = styled.div`
@@ -35,13 +37,13 @@ font-weight:500;
 margin: 0.5em;
 padding: 0.5em;
 `
+
 const Profile = styled.div`
 display:flex;
 flex-direction: row;
 align-items: center;
-
 .icon{
-  color: white;
+  color: ${color.second};
   margin-left: 19px;
   width: 17px;
   height: 20px;
@@ -50,7 +52,22 @@ align-items: center;
     height: 15px;
   }
 }
+`
+const DropDown = styled.div`
+margin-left: 5px;
+margin-top: 3px;
+border-top: 5px solid ${color.second};
+border-right: 5px solid transparent;
+border-left: 5px solid transparent;
+`
 
+const Avatar = styled.img.attrs(props => ({
+  src: Avatarimg
+}))`
+margin-left: 19px;
+border-radius: 50%;
+width:20px;
+height:20px;
 `
 
 
@@ -67,6 +84,9 @@ function Navbar() {
         <Profile>
           <FontAwesomeIcon icon={faBell} className="icon"></FontAwesomeIcon>
           <FontAwesomeIcon icon={faPlus} className="icon small"></FontAwesomeIcon>
+          <DropDown></DropDown>
+          <Avatar></Avatar>
+          <DropDown></DropDown>
         </Profile>
       </Container>
     </StyledNavbar>
