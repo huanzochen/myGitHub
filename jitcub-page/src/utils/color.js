@@ -4,6 +4,7 @@ export const color = {
   // primary: 'trasperent',
   second: 'white',
   pink: 'palevioletred',
-  border: '#ebebebe1'
+  button: '#f5f5f5',
+  border: '#ebebebe1',
 
 }
