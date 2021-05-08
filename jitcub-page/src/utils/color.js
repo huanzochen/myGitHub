@@ -5,6 +5,7 @@ export const color = {
   second: 'white',
   pink: 'palevioletred',
   button: '#f5f5f5',
+  border_dark: '#969292',
   border: '#ebebebe1',
 
 }
