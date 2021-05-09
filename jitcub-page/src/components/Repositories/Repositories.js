@@ -2,6 +2,7 @@ import styled from 'styled-components'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlusSquare } from '@fortawesome/free-solid-svg-icons'
 import { color } from '../../utils/color'
+import Button from '../Button'
 
 const StyledRepositories = styled.div`
 `
@@ -16,34 +17,17 @@ const SearchBar = styled.input`
 
 `
 
-const Button = styled.button.attrs(props => ({
-  type: 'button'
-}))`
-  height: 30px;
-  font-weight: 700;
-  font-family: system-ui;
-  border: 1.5px solid ${color.border_dark};
-  border-radius: 5px;
-  background: ${color.button};
-  text-decoration: none;
-  margin: 0;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  `
-
-
 function Repositories() {
   return (
     <StyledRepositories>
       <Container>
         <Bar>
           <SearchBar/>
-          <Button>Type</Button>
-          <Button>Language</Button>
-          <Button>Sort</Button>
-          <Button>
+          <Button label="Type" theme='main'/>
+          <Button label="Language" theme='main'/>
+          <Button label="Sort" theme='main'/>
+          <Button label="New" theme='new'>
             <FontAwesomeIcon icon={faPlusSquare}></FontAwesomeIcon>
-              New
           </Button>
         </Bar>
 
