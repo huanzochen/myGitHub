@@ -2,6 +2,7 @@ import styled from 'styled-components'
 import NavBar from './components/NavBar/NavBar'
 import FunctionBar from './components/FunctionBar/FunctionBar'
 import Profile from './components/Profile/Profile'
+import Repositories from './components/Repositories/Repositories'
 
 const StyledApp = styled.div`
 *, *::before, *::after {
@@ -9,12 +10,20 @@ const StyledApp = styled.div`
 }
 `
 
+const MainPage = styled.div`
+display:flex;
+flex-direction: row;
+`
+
 function App() {
   return (
     <StyledApp>
       <NavBar></NavBar>
       <FunctionBar></FunctionBar>
-      <Profile></Profile>
+      <MainPage>
+        <Profile></Profile>
+        <Repositories></Repositories>
+      </MainPage>
     </StyledApp>
   )
 }

@@ -43,7 +43,6 @@ flex-direction: column;
 const Button = styled.button.attrs(props => ({
   type: 'button'
 }))`
-width: 25%; // 等到右邊的 elements 出來後就可以用 flex 並調整到 100%
 height: 30px;
 font-weight: 700;
 font-family: system-ui;
@@ -86,7 +85,6 @@ span {
 `
 
 const BorderLine = styled.div`
-width: 25%; // 等到右邊的 elements 出來後就可以用 flex 並調整到 100%
 border-bottom: 1px solid ${color.border}; 
 `
 
