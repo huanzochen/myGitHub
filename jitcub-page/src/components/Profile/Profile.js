@@ -4,17 +4,17 @@ import { faUsers } from '@fortawesome/free-solid-svg-icons'
 import { faInbox } from '@fortawesome/free-solid-svg-icons'
 import { faStar } from '@fortawesome/free-regular-svg-icons'
 import { color } from '../../utils/color'
-
+import Button from '../Button'
 import AvatarImg from '../../img/avatar.jpg'
 
 
 const StyledProfile = styled.div`
-
 `
 
 const Container = styled.div`
 margin-top: -30px;
 padding-left: 30px;
+padding-right: 15px;
 display:flex;
 flex-direction:column;
 `
@@ -38,21 +38,6 @@ flex-direction: column;
   font-size: 22px;
   font-weight: 300;  
 }
-`
-
-const Button = styled.button.attrs(props => ({
-  type: 'button'
-}))`
-height: 30px;
-font-weight: 700;
-font-family: system-ui;
-border: 1.5px solid ${color.border_dark};
-border-radius: 5px;
-background: ${color.button};
-text-decoration: none;
-margin: 0;
--webkit-appearance: none;
--moz-appearance: none;
 `
 
 const ProfileLabel = styled.div`
@@ -114,7 +99,7 @@ function Profile() {
           <span className="name">huanzo86</span>
           <span className="nickname">huanzochen</span>
         </Name>
-        <Button>Edit Profile</Button>
+        <Button theme='main'>Edit Profile</Button>
         <ProfileLabel type="description">
           <FontAwesomeIcon icon={faUsers} className='font-wrapper'></FontAwesomeIcon>
           <span className='wrapper'>14</span>

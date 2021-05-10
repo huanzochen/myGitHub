@@ -5,14 +5,22 @@ import { color } from '../utils/color'
 const StyledButton = styled.button.attrs(props => ({
   type: 'button'
 }))`
-    height: 30px;
+    padding: 5px 16px;
+    font-size: 14px;
     font-weight: 600;
     font-family: system-ui;
     border-radius: 5px;
     text-decoration: none;
-    margin: 0;
     -webkit-appearance: none;
     -moz-appearance: none;
+
+    /* width: ${props => {
+    switch (props.theme) {
+    case 'main': return '100%'
+    case 'new': return '10%'
+    default: return '100%'
+    }
+  }}; */
 
     color: ${props => {
     switch (props.theme) {
@@ -53,7 +61,6 @@ function Button (props) {
   return (
     <StyledButton theme={`${props.theme}`}>
       {props.children}
-      {props.label}
     </StyledButton>
   )
 }
