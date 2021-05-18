@@ -88,7 +88,7 @@ function NavBar() {
         <Input></Input>
         <A>Pulls</A>
         <A>Issues</A>
-        <A>MarketPlace</A>
+        <A>Marketplace</A>
         <A>Explore</A>
         <Profile>
           <FontAwesomeIcon icon={faBell} className="icon leftspace"></FontAwesomeIcon>

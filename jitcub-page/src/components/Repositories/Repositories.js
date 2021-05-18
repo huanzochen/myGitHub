@@ -35,7 +35,7 @@ margin-left: 5px;
 margin-right: 5px;
 `
 
-const WrapperButton = styled.div`
+const ClassifyButton = styled.div`
 flex-grow: 1;
 display: flex;
 flex-direction: row;
@@ -55,12 +55,16 @@ function Repositories() {
         <WrapperTop>
           <Bar>
             <SearchBar/>
-            <WrapperButton>
-              <Button theme='main'>Type</Button>
-              <Button theme='main'>Language</Button>
+            <ClassifyButton>
+              <Button theme='main'>
+                Type
+              </Button>
+              <Button theme='main'>
+                Language
+              </Button>
               <Button theme='main'>Sort</Button>
 
-            </WrapperButton>
+            </ClassifyButton>
           </Bar>
           <Button theme='new'>
             <FontAwesomeIcon icon={faPlusSquare}></FontAwesomeIcon>

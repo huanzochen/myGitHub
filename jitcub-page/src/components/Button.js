@@ -13,14 +13,10 @@ const StyledButton = styled.button.attrs(props => ({
     text-decoration: none;
     -webkit-appearance: none;
     -moz-appearance: none;
-
-    /* width: ${props => {
-    switch (props.theme) {
-    case 'main': return '100%'
-    case 'new': return '10%'
-    default: return '100%'
-    }
-  }}; */
+    
+    *{
+      margin-right:5px;
+     }
 
     color: ${props => {
     switch (props.theme) {
@@ -33,12 +29,12 @@ const StyledButton = styled.button.attrs(props => ({
     }
   }};
 
-    background-color: ${props => {
+    background: ${props => {
     switch (props.theme) {
     case 'main':
-      return `${color.button}`
-    case 'new':
-      return `${color.add}`
+      return `radial-gradient(${color.button}e0, ${color.button}e9, ${color.button} )`
+    case 'new': 
+      return `radial-gradient(${color.add}e0 , ${color.add}e9 , ${color.add} )`
     default:
       return '1.5px solid black' 
     }
@@ -47,13 +43,15 @@ const StyledButton = styled.button.attrs(props => ({
     border: ${props => {
     switch (props.theme) {
     case 'main':
-      return `1.5px solid ${color.border_dark}`
+      return `1.5px solid ${color.border_grey}`
     case 'new':
       return `1.5px solid ${color.border_green}`
     default:
       return '1.5px solid black' 
     }
   }};
+
+  box-shadow: 0px 1px ${color.border}aa;
 
 `
 
