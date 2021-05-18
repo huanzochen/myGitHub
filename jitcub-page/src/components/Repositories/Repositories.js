@@ -5,7 +5,7 @@ import { color } from '../../utils/color'
 import Button from '../Button'
 
 const StyledRepositories = styled.div`
-flex-grow: 1;
+width: 75%;
 `
 
 const Container = styled.div`

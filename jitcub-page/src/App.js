@@ -8,11 +8,21 @@ const StyledApp = styled.div`
 *, *::before, *::after {
   box-sizing: border-box;
 }
+display:flex;
+flex-direction: column;
 `
 
 const MainPage = styled.div`
 display:flex;
 flex-direction: row;
+/* justify-content: center; */
+`
+const Container = styled.div`
+width:100%;
+max-width: 1280px;
+display:flex;
+flex-direction: row;
+justify-content: center;
 `
 
 function App() {
@@ -21,8 +31,10 @@ function App() {
       <NavBar></NavBar>
       <FunctionBar></FunctionBar>
       <MainPage>
-        <Profile></Profile>
-        <Repositories></Repositories>
+        <Container>
+          <Profile></Profile>
+          <Repositories></Repositories>
+        </Container>
       </MainPage>
     </StyledApp>
   )
