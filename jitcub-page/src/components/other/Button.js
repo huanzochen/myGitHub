@@ -1,12 +1,15 @@
 import styled from 'styled-components'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { color } from '../utils/color'
+import { color } from '../../utils/color'
 
 const StyledButton = styled.button.attrs(props => ({
   type: 'button'
 }))`
+    display:flex;
+    flex-direction:row;
+    align-items:center;
     padding: 5px 16px;
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 600;
     font-family: system-ui;
     border-radius: 5px;
@@ -14,10 +17,6 @@ const StyledButton = styled.button.attrs(props => ({
     -webkit-appearance: none;
     -moz-appearance: none;
     
-    *{
-      margin-right:5px;
-     }
-
     color: ${props => {
     switch (props.theme) {
     case 'main':

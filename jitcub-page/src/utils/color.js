@@ -9,5 +9,7 @@ export const color = {
   border_green: '#30942c',
   border_grey: '#d4d3d3',
   border_dark: '#969292',
+  white: 'white',
+  black: 'black',
   pink: 'palevioletred'
 }

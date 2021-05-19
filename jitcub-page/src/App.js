@@ -15,7 +15,7 @@ flex-direction: column;
 const MainPage = styled.div`
 display:flex;
 flex-direction: row;
-/* justify-content: center; */
+justify-content: center;
 `
 const Container = styled.div`
 width:100%;

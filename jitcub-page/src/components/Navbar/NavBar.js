@@ -5,6 +5,7 @@ import { faBell } from '@fortawesome/free-regular-svg-icons'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
 import { color } from '../../utils/color'
 
+import DropDown from '../other/DropDown'
 import AvatarImg from '../../img/avatar.jpg'
 
 const StyledNavBar = styled.div`
@@ -41,13 +42,17 @@ const Input = styled.input.attrs(props => ({
   size: props.size || '10px'
 }))`
 border: 2px solid ${color.pink};
-border-radius: 3px;
+border-radius: 8px;
 margin: ${props => props.size};
 padding: ${props => props.size};
 
 :focus{
 outline:none
 }
+`
+
+const WrapperA = styled.div`
+width: 100%;
 `
 
 const A = styled.a`
@@ -60,14 +65,9 @@ padding: 0.3em;
 const Profile = styled.div`
 display:flex;
 flex-direction: row;
+justify-content: flex-end;
 align-items: center;
-`
-const DropDown = styled.div`
-margin-left: 5px;
-margin-top: 3px;
-border-top: 5px solid ${color.second};
-border-right: 5px solid transparent;
-border-left: 5px solid transparent;
+margin-right: 20px;
 `
 
 const Avatar = styled.img.attrs(props => ({
@@ -86,16 +86,18 @@ function NavBar() {
       <Container>
         <FontAwesomeIcon icon={faAndroid} className="icon big leftspace rightspace"></FontAwesomeIcon>
         <Input></Input>
-        <A>Pulls</A>
-        <A>Issues</A>
-        <A>Marketplace</A>
-        <A>Explore</A>
+        <WrapperA>
+          <A>Pulls</A>
+          <A>Issues</A>
+          <A>Marketplace</A>
+          <A>Explore</A>
+        </WrapperA>
         <Profile>
           <FontAwesomeIcon icon={faBell} className="icon leftspace"></FontAwesomeIcon>
           <FontAwesomeIcon icon={faPlus} className="icon small leftspace"></FontAwesomeIcon>
-          <DropDown></DropDown>
+          <DropDown color={color.white}></DropDown>
           <Avatar></Avatar>
-          <DropDown></DropDown>
+          <DropDown color={color.white}></DropDown>
         </Profile>
       </Container>
     </StyledNavBar>

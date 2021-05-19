@@ -4,7 +4,7 @@ import { faUsers } from '@fortawesome/free-solid-svg-icons'
 import { faInbox } from '@fortawesome/free-solid-svg-icons'
 import { faStar } from '@fortawesome/free-regular-svg-icons'
 import { color } from '../../utils/color'
-import Button from '../Button'
+import Button from '../other/Button'
 import AvatarImg from '../../img/avatar.jpg'
 
 
@@ -17,6 +17,10 @@ padding-left: 30px;
 padding-right: 15px;
 display:flex;
 flex-direction:column;
+
+.button-wrapper{
+  width:100%;
+}
 `
 
 const Avatar = styled.img.attrs(props => ({
@@ -50,12 +54,15 @@ flex-direction: ${props => {
     if (props.type === 'description') return 'row'
     else if (props.type === 'achievment') return 'column'
   }};
-.font-wrapper {
-  padding-right:2px;
+align-items: ${props => {
+    if (props.type === 'description') return 'center'
+    else if (props.type === 'achievment') return 'flex-start'
+  }};
+.icon-wrapper {
+  padding-left:3px;
 }
-.wrapper {
-  padding-left:2px;
-  padding-right:2px;
+.text-wrapper {
+  padding-left:3px;
 }
 span {
   font-size: 14px;
@@ -99,21 +106,23 @@ function Profile() {
           <span className="name">huanzo86</span>
           <span className="nickname">huanzochen</span>
         </Name>
-        <Button theme='main'>Edit Profile</Button>
+        <Button theme='main'>
+          <div className='button-wrapper'>Edit Profile</div>
+        </Button>
         <ProfileLabel type="description">
-          <FontAwesomeIcon icon={faUsers} className='font-wrapper'></FontAwesomeIcon>
-          <span className='wrapper'>14</span>
-          <span>followers</span>
-          <span> · </span>
-          <span className='wrapper'>14</span>
-          <span>following</span>
-          <span> · </span>
-          <FontAwesomeIcon icon={faStar} className='font-wrapper'></FontAwesomeIcon>
-          <span className='wrapper'>35</span>
+          <FontAwesomeIcon icon={faUsers} className='icon-wrapper'></FontAwesomeIcon>
+          <span className='text-wrapper'>14</span>
+          <span className='text-wrapper'>followers</span>
+          <span className='text-wrapper'> · </span>
+          <span className='text-wrapper'>14</span>
+          <span className='text-wrapper'>following</span>
+          <span className='text-wrapper'> · </span>
+          <FontAwesomeIcon icon={faStar} className='icon-wrapper'></FontAwesomeIcon>
+          <span className='text-wrapper'>35</span>
         </ProfileLabel>
         <ProfileLabel type="description">
-          <FontAwesomeIcon icon={faInbox} className='font-wrapper'></FontAwesomeIcon>
-          <span className='wrapper'>cy94295@gmail.com</span>
+          <FontAwesomeIcon icon={faInbox} className='icon-wrapper'></FontAwesomeIcon>
+          <span className='text-wrapper'>cy94295@gmail.com</span>
         </ProfileLabel>
 
         <BorderLine/>
