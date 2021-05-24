@@ -57,13 +57,13 @@ width: 100%;
 
 const A = styled.a`
 color: ${color.second};
-font-weight:500;
+font-weight: 500;
 margin: 0.3em;
 padding: 0.3em;
 `
 
 const Profile = styled.div`
-display:flex;
+display: flex;
 flex-direction: row;
 justify-content: flex-end;
 align-items: center;

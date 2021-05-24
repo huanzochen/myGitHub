@@ -5,6 +5,7 @@ import { color } from '../../utils/color'
 import Button from '../other/Button'
 
 import DropDown from '../other/DropDown'
+import RepoList from './RepoList'
 
 const StyledRepositories = styled.div`
 width: 75%;
@@ -14,7 +15,7 @@ const Container = styled.div`
 `
 
 const WrapperTopContainer = styled.div`
-padding:15px;
+padding: 15px;
 `
 
 const WrapperTop = styled.div`
@@ -87,13 +88,11 @@ function Repositories() {
               <FontAwesomeIcon icon={faPlusSquare} className='wrapper'></FontAwesomeIcon>
             New
             </Button>
-         
           </WrapperTop>
           <BorderLine/>
         </WrapperTopContainer>
 
-
-
+        <RepoList></RepoList>
 
       </Container>
     </StyledRepositories>

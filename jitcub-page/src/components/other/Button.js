@@ -5,9 +5,9 @@ import { color } from '../../utils/color'
 const StyledButton = styled.button.attrs(props => ({
   type: 'button'
 }))`
-    display:flex;
-    flex-direction:row;
-    align-items:center;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
     padding: 5px 16px;
     font-size: 13px;
     font-weight: 600;
@@ -46,7 +46,7 @@ const StyledButton = styled.button.attrs(props => ({
     case 'new':
       return `1.5px solid ${color.border_green}`
     default:
-      return '1.5px solid black' 
+      return `1.5px solid ${color.border_grey}`
     }
   }};
 

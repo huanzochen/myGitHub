@@ -8,19 +8,19 @@ const StyledApp = styled.div`
 *, *::before, *::after {
   box-sizing: border-box;
 }
-display:flex;
+display: flex;
 flex-direction: column;
 `
 
 const MainPage = styled.div`
-display:flex;
+display: flex;
 flex-direction: row;
 justify-content: center;
 `
 const Container = styled.div`
-width:100%;
+width: 100%;
 max-width: 1280px;
-display:flex;
+display: flex;
 flex-direction: row;
 justify-content: center;
 `

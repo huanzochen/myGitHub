@@ -15,11 +15,11 @@ const Container = styled.div`
 margin-top: -30px;
 padding-left: 30px;
 padding-right: 15px;
-display:flex;
-flex-direction:column;
+display: flex;
+flex-direction: column;
 
 .button-wrapper{
-  width:100%;
+  width: 100%;
 }
 `
 
@@ -59,10 +59,10 @@ align-items: ${props => {
     else if (props.type === 'achievment') return 'flex-start'
   }};
 .icon-wrapper {
-  padding-left:3px;
+  padding-left: 3px;
 }
 .text-wrapper {
-  padding-left:3px;
+  padding-left: 3px;
 }
 span {
   font-size: 14px;
