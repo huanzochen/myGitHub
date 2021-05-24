@@ -5,10 +5,6 @@ import { color } from '../../utils/color'
 import Button from '../other/Button'
 import AvatarImg from '../../img/avatar.jpg'
 
-
-
-
-
 const StyledRepoList = styled.div`
 padding: 15px;
 `
@@ -17,6 +13,7 @@ const Container = styled.div`
 display: flex;
 flex-direction: row;
 justify-content: space-between;
+padding-bottom: 15px;
 `
 
 const Main = styled.div`
@@ -48,6 +45,10 @@ flex-direction: column;
 .wrapper{
   margin-right: 5px;
 }
+
+& > button,img{
+  margin-bottom: 5px;
+}
 `
 
 const Activity = styled.img.attrs(props => ({
@@ -55,6 +56,10 @@ const Activity = styled.img.attrs(props => ({
 }))`
   width: 40px;
   height: 40px;
+`
+
+const BorderLine = styled.div`
+border-bottom: 1px solid ${color.border}; 
 `
 
 
@@ -80,6 +85,7 @@ function RepoList () {
           </Activity>
         </Info>
       </Container>
+      <BorderLine/>
     </StyledRepoList>
   )
 }
