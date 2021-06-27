@@ -13,6 +13,8 @@
         "semi": ["error", "never"],
         "space-before-blocks": ["error", "always"],
         "arrow-spacing": "error",
+        // object 裡面的 key value 的 value 在冒號後要空格
+        "key-spacing": ["error", { "beforeColon": false }],
         "keyword-spacing": "error",
         "brace-style": ["error", "stroustrup", { "allowSingleLine": true }],
         "space-infix-ops": ["error"],
