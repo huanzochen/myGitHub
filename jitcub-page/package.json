@@ -9,11 +9,13 @@
     "@fortawesome/free-regular-svg-icons": "^5.15.3",
     "@fortawesome/free-solid-svg-icons": "^5.15.3",
     "@fortawesome/react-fontawesome": "^0.1.14",
+    "@reduxjs/toolkit": "^1.6.0",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-redux": "^7.2.4",
     "react-scripts": "4.0.3",
     "styled-components": "^5.2.3",
     "web-vitals": "^1.0.1"
@@ -24,7 +26,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "eslint:all": "eslint --ext .js --fix ./",
-    "lint:js":"stylelint ./src/**/*.js",
+    "lint:js": "stylelint ./src/**/*.js",
     "lint:all": "stylelint ./src/**/*.js --fix"
   },
   "license": "SEE LICENSE IN LICENSE",
