@@ -3,9 +3,16 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlusSquare } from '@fortawesome/free-solid-svg-icons'
 import { color } from '../../utils/color'
 import Button from '../other/Button'
+import { useSelector, useDispatch } from 'react-redux'
 
 import DropDown from '../other/DropDown'
-import RepoList from './RepoList'
+import Repo from './Repo'
+
+import {
+  fetchRepos,
+  selectRepoIds
+} from './reposSlice'
+import { useEffect } from 'react'
 
 const StyledRepositories = styled.div`
 width: 75%;
@@ -61,6 +68,30 @@ border-bottom: 1px solid ${color.border};
 
 
 function Repositories() {
+  const dispatch = useDispatch()
+  const repoStatus = useSelector((state) => state.repos.repoStatus)
+  const repoIds = useSelector(selectRepoIds)
+
+  useEffect(() => {
+    function initailize() {
+      if (repoStatus === 'idle') {
+        dispatch(fetchRepos())
+      }
+    }
+    initailize()
+  })
+
+  let content
+  if (repoStatus === 'loading') {
+    content = <Repo type="loading"></Repo>
+  } 
+  else if (repoStatus === 'succeeded') {
+    content = repoIds.map((repoId) => <Repo key={repoId} repoId={repoId} type="normal"> </Repo>)
+  }
+  else if (repoStatus === 'failed') {
+    content = <Repo type="failed"> </Repo>
+  }
+
   return (
     <StyledRepositories>
       <Container>
@@ -92,7 +123,7 @@ function Repositories() {
           <BorderLine/>
         </WrapperTopContainer>
 
-        <RepoList></RepoList>
+        {content}
 
       </Container>
     </StyledRepositories>

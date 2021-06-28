@@ -5,7 +5,7 @@ import { color } from '../../utils/color'
 import Button from '../other/Button'
 import AvatarImg from '../../img/avatar.jpg'
 
-const StyledRepoList = styled.div`
+const StyledRepo = styled.div`
 padding: 15px;
 `
 
@@ -63,31 +63,38 @@ border-bottom: 1px solid ${color.border};
 `
 
 
-function RepoList () {
-  return (
-    <StyledRepoList>
-      <Container>
-        <Main>
-          <Title> JitCub-page </Title>
-          <Description> a page that can list your repos using github API </Description>
-          <Type>
-            <div> Javascript </div>
-            <div> License </div>
-            <div> updated time </div>
-          </Type>
-        </Main>
-        <Info>
-          <Button> 
-            <FontAwesomeIcon icon={faStar} className='wrapper'></FontAwesomeIcon>
+function Repo ({ repoId, type }) {
+  switch (type) {
+  case 'normal':
+    return (
+      <StyledRepo>
+        <Container>
+          <Main>
+            <Title> JitCub-page </Title>
+            <Description> a page that can list your repos using github API </Description>
+            <Type>
+              <div> Javascript </div>
+              <div> License </div>
+              <div> updated time </div>
+            </Type>
+          </Main>
+          <Info>
+            <Button> 
+              <FontAwesomeIcon icon={faStar} className='wrapper'></FontAwesomeIcon>
               Star 
-          </Button>
-          <Activity>
-          </Activity>
-        </Info>
-      </Container>
-      <BorderLine/>
-    </StyledRepoList>
-  )
+            </Button>
+            <Activity>
+            </Activity>
+          </Info>
+        </Container>
+        <BorderLine/>
+      </StyledRepo>
+    )
+  case 'loading':
+    return (
+      <StyledRepo> loading</StyledRepo>
+    )
+  }
 }
 
-export default RepoList
+export default Repo
