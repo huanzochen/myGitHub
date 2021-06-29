@@ -15,15 +15,6 @@ export const fetchRepos = createAsyncThunk('github/fetchRepos', async() => {
     'User-Agent': 'Thunder Client (https://www.thunderclient.io)'
   }
 
-  // 測試 loading 動畫用
-  const promise = new Promise((resolve) => {
-    setTimeout(() => {
-      resolve()
-    }, 5000)
-  })
-  await promise
-
-  
   const response = await fetch('https://api.github.com/users/huanzochen/repos?sort=pushed', {
     method: 'GET',
     headers: headersList
@@ -56,5 +47,6 @@ export const { } = reposSlice.actions
 export default reposSlice.reducer
 
 export const {
-  selectIds: selectRepoIds
+  selectIds: selectRepoIds,
+  selectById: selectRepoById
 } = reposAdapter.getSelectors(state => state.repos)

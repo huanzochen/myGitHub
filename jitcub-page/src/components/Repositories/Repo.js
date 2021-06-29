@@ -1,9 +1,16 @@
 import styled from 'styled-components'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faStar } from '@fortawesome/free-regular-svg-icons'
+import { faStar, faCopy } from '@fortawesome/free-regular-svg-icons'
+import { useSelector } from 'react-redux'
+import { formatDistance } from 'date-fns'
+
 import { color } from '../../utils/color'
 import Button from '../other/Button'
 import AvatarImg from '../../img/avatar.jpg'
+
+import {
+  selectRepoById
+} from './reposSlice'
 
 const StyledRepo = styled.div`
 padding: 15px;
@@ -33,7 +40,10 @@ const Type = styled.div`
 display: flex;
 flex-direction: row;
 font-size: 10px;
-*{
+* {
+  margin-right: 2px;
+}
+div {
   margin-right: 10px;
 }
 `
@@ -62,20 +72,65 @@ const BorderLine = styled.div`
 border-bottom: 1px solid ${color.border}; 
 `
 
+const Loader = styled.div`
+display: flex;
+flex-direction: row;
+justify-content: center;
+width: 100%;
+height: 100px;
+background: ${color.white};
+z-index: 1000;
+
+.loader {
+  border: 5px solid ${color.border}; 
+  border-top: 5px solid ${color.primary}; 
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+`
 
 function Repo ({ repoId, type }) {
+  const repo = useSelector(state => selectRepoById(state, repoId))
+
   switch (type) {
   case 'normal':
+    let language
+    language = 
+    repo.language ? <div> {repo.language} </div> 
+      : ''
+
+    let license
+    license = 
+    repo.license ? 
+      <div>
+        <FontAwesomeIcon icon={faCopy} className='wrapper'></FontAwesomeIcon> 
+        {repo.license.name}
+      </div>
+      : ''
+    
+    let updated_time 
+    updated_time = 
+    <div>
+      {`Updated ${formatDistance(new Date(), new Date(repo.pushed_at), { addSuffix: true })} ago`}
+    </div>
+
     return (
       <StyledRepo>
         <Container>
           <Main>
-            <Title> JitCub-page </Title>
-            <Description> a page that can list your repos using github API </Description>
+            <Title> {repo.name} </Title>
+            <Description> {repo.description} </Description>
             <Type>
-              <div> Javascript </div>
-              <div> License </div>
-              <div> updated time </div>
+              {language}
+              {license}
+              {updated_time}
             </Type>
           </Main>
           <Info>
@@ -92,7 +147,11 @@ function Repo ({ repoId, type }) {
     )
   case 'loading':
     return (
-      <StyledRepo> loading</StyledRepo>
+      <StyledRepo>
+        <Loader>
+          <div className="loader"></div>
+        </Loader>
+      </StyledRepo>
     )
   }
 }
