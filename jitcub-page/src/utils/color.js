@@ -5,11 +5,19 @@ export const color = {
   second: 'white',
   button: '#f7f7f7',
   add: '#2ea44f',
-  border: '#ececec',
-  border_green: '#30942c',
-  border_grey: '#d4d3d3',
-  border_dark: '#969292',
   white: 'white',
   black: 'black',
   pink: 'palevioletred'
+}
+
+export const border = {
+  main: '#ececec',
+  green: '#30942c',
+  grey: '#d4d3d3',
+  dark: '#969292',
+}
+
+export const button = {
+  main: '#f7f7f7',
+  add: '#2ea44f',
 }

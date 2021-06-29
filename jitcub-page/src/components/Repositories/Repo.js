@@ -4,7 +4,7 @@ import { faStar, faCopy } from '@fortawesome/free-regular-svg-icons'
 import { useSelector } from 'react-redux'
 import { formatDistance } from 'date-fns'
 
-import { color } from '../../utils/color'
+import { color, border } from '../../utils/color'
 import Button from '../other/Button'
 import AvatarImg from '../../img/avatar.jpg'
 
@@ -69,7 +69,7 @@ const Activity = styled.img.attrs(props => ({
 `
 
 const BorderLine = styled.div`
-border-bottom: 1px solid ${color.border}; 
+border-bottom: 1px solid ${border.main}; 
 `
 
 const Loader = styled.div`
@@ -82,7 +82,7 @@ background: ${color.white};
 z-index: 1000;
 
 .loader {
-  border: 5px solid ${color.border}; 
+  border: 5px solid ${border.main}; 
   border-top: 5px solid ${color.primary}; 
   border-radius: 50%;
   width: 40px;

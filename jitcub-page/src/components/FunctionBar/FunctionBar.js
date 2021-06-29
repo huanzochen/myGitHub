@@ -4,10 +4,10 @@ import { faBookReader } from '@fortawesome/free-solid-svg-icons'
 import { faFolderOpen } from '@fortawesome/free-solid-svg-icons'
 import { faProjectDiagram } from '@fortawesome/free-solid-svg-icons'
 import { faCubes } from '@fortawesome/free-solid-svg-icons'
-import { color } from '../../utils/color'
+import { color, border } from '../../utils/color'
 
 const StyledFunctionBar = styled.div`
-border-bottom: 1px solid ${color.border};
+border-bottom: 1px solid ${border.main};
 `
 const Container = styled.div`
 display:flex;
@@ -30,7 +30,7 @@ border-bottom: 2px solid ${props => {
 margin-left:10px;
 }
 &:hover{
-  border-bottom: 2px solid ${color.border};
+  border-bottom: 2px solid ${border.main};
 }
 `
 

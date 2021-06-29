@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { color } from '../../utils/color'
+import { color, border, button } from '../../utils/color'
 
 const StyledButton = styled.button.attrs(props => ({
   type: 'button'
@@ -31,7 +31,7 @@ const StyledButton = styled.button.attrs(props => ({
     background: ${props => {
     switch (props.theme) {
     case 'main':
-      return `radial-gradient(${color.button}e0, ${color.button}e9, ${color.button} )`
+      return `radial-gradient(${button.main}e0, ${button.main}e9, ${button.main} )`
     case 'new': 
       return `radial-gradient(${color.add}e0 , ${color.add}e9 , ${color.add} )`
     default:
@@ -42,15 +42,15 @@ const StyledButton = styled.button.attrs(props => ({
     border: ${props => {
     switch (props.theme) {
     case 'main':
-      return `1.5px solid ${color.border_grey}`
+      return `1.5px solid ${border.grey}`
     case 'new':
-      return `1.5px solid ${color.border_green}`
+      return `1.5px solid ${border.green}`
     default:
-      return `1.5px solid ${color.border_grey}`
+      return `1.5px solid ${border.grey}`
     }
   }};
 
-  box-shadow: 0px 1px ${color.border}aa;
+  box-shadow: 0px 1px ${border.main}aa;
 
 `
 

@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlusSquare } from '@fortawesome/free-solid-svg-icons'
-import { color } from '../../utils/color'
+import { color, border } from '../../utils/color'
 import Button from '../other/Button'
 import { useSelector, useDispatch } from 'react-redux'
 
@@ -46,7 +46,7 @@ flex-grow: 1;
 const SearchBar = styled.input`
 flex-grow: 3;
 max-width: 600px;
-border: 2px solid ${color.border};
+border: 2px solid ${border.main};
 padding: 5px;
 border-radius: 5px;
 margin-right: 10px; 
@@ -63,7 +63,7 @@ button{
 `
 
 const BorderLine = styled.div`
-border-bottom: 1px solid ${color.border}; 
+border-bottom: 1px solid ${border.main}; 
 `
 
 

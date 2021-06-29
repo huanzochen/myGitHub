@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUsers } from '@fortawesome/free-solid-svg-icons'
 import { faInbox } from '@fortawesome/free-solid-svg-icons'
 import { faStar } from '@fortawesome/free-regular-svg-icons'
-import { color } from '../../utils/color'
+import { color, border } from '../../utils/color'
 import Button from '../other/Button'
 import AvatarImg from '../../img/avatar.jpg'
 
@@ -77,7 +77,7 @@ span {
 `
 
 const BorderLine = styled.div`
-border-bottom: 1px solid ${color.border}; 
+border-bottom: 1px solid ${border.main}; 
 `
 
 const Achievement = styled.img.attrs(props => ({
