@@ -127,7 +127,7 @@ function Repo ({ repoId, type }) {
       <StyledRepo>
         <Container>
           <Main>
-            <Title> {repo.name} </Title>
+            <Title href={repo.html_url}> {repo.name} </Title>
             <Description> {repo.description} </Description>
             <Type>
               {language}
