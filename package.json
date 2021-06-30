@@ -1,5 +1,5 @@
 {
-  "name": "jitcub-page",
+  "name": "my-github",
   "version": "0.1.0",
   "private": true,
   "description": "a page that can list your repos using github API",

@@ -1,4 +1,4 @@
-# JitCub-page
+# ziquanh19-github
 a page that can list repos using github API
 
 # Links
