@@ -34,6 +34,8 @@ margin-bottom: 10px;
 `
 const Description = styled.div`
 margin-bottom: 10px;
+color: ${color.shallow_black};
+width: 75%;
 `
 
 const Type = styled.div`

@@ -3,9 +3,8 @@ export const color = {
   primary: 'palevioletred',
   // primary: 'trasperent',
   second: 'white',
-  button: '#f7f7f7',
-  add: '#2ea44f',
   white: 'white',
+  shallow_black: '#5f5f5f',
   black: 'black',
   pink: 'palevioletred'
 }

@@ -33,7 +33,7 @@ const StyledButton = styled.button.attrs(props => ({
     case 'main':
       return `radial-gradient(${button.main}e0, ${button.main}e9, ${button.main} )`
     case 'new': 
-      return `radial-gradient(${color.add}e0 , ${color.add}e9 , ${color.add} )`
+      return `radial-gradient(${button.add}e0 , ${button.add}e9 , ${button.add} )`
     default:
       return '1.5px solid black' 
     }
