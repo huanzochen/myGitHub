@@ -65,7 +65,8 @@ flex-direction: column;
 
 const Activity = styled.img.attrs(props => ({
   src: AvatarImg
-}))`
+}))
+`
   width: 40px;
   height: 40px;
 `
