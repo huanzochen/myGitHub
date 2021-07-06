@@ -17,7 +17,7 @@ justify-content:center;
 const FunctionButton = styled.div`
 display: flex;
 align-items: center;
-font-weight: 400;
+font-weight: 600;
 padding-left: 15px;
 padding-right: 15px;
 border-bottom: 2px solid ${props => {
