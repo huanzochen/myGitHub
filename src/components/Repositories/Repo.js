@@ -6,6 +6,7 @@ import { formatDistance } from 'date-fns'
 
 import { color, border } from '../../utils/color'
 import Button from '../other/Button'
+import Loader from '../other/Loader'
 import AvatarImg from '../../img/avatar.jpg'
 
 import {
@@ -75,30 +76,6 @@ const BorderLine = styled.div`
 border-bottom: 1px solid ${border.main}; 
 `
 
-const Loader = styled.div`
-display: flex;
-flex-direction: row;
-justify-content: center;
-width: 100%;
-height: 100px;
-background: ${color.white};
-z-index: 1000;
-
-.loader {
-  border: 5px solid ${border.main}; 
-  border-top: 5px solid ${color.primary}; 
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  animation: spin 2s linear infinite;
-}
-
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-`
-
 function Repo ({ repoId, type }) {
   const repo = useSelector(state => selectRepoById(state, repoId))
 
@@ -151,9 +128,7 @@ function Repo ({ repoId, type }) {
   case 'loading':
     return (
       <StyledRepo>
-        <Loader>
-          <div className="loader"></div>
-        </Loader>
+        <Loader/>
       </StyledRepo>
     )
   }
