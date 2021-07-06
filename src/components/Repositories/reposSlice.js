@@ -1,11 +1,13 @@
 import { createSlice, 
   createAsyncThunk,
-  createEntityAdapter } from '@reduxjs/toolkit'
+  createEntityAdapter,
+  createSelector } from '@reduxjs/toolkit'
 
 const reposAdapter = createEntityAdapter()
 
 const initialState = reposAdapter.getInitialState({
   repoStatus: 'idle',
+  page: 1,
   error: 'null'
 })
 
@@ -26,6 +28,11 @@ const reposSlice = createSlice({
   name: 'repos',
   initialState,
   reducers: {
+    moreData: {
+      reducer(state, action) {
+        state.page++
+      }
+    }
   },
   extraReducers: {
     [fetchRepos.pending]: (state, action) => {
@@ -42,7 +49,7 @@ const reposSlice = createSlice({
   }
 })
 
-export const { } = reposSlice.actions
+export const { moreData } = reposSlice.actions
 
 export default reposSlice.reducer
 
@@ -50,3 +57,11 @@ export const {
   selectIds: selectRepoIds,
   selectById: selectRepoById
 } = reposAdapter.getSelectors(state => state.repos)
+
+export const selectRepoIdsPart = createSelector(
+  selectRepoIds,
+  (state, pagination) => pagination,
+  (repoIds, pagination) => {
+    return repoIds.slice(0, pagination * 6)
+  }
+)

@@ -1,18 +1,22 @@
+import React, { useState, useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
 import styled from 'styled-components'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlusSquare } from '@fortawesome/free-solid-svg-icons'
+
 import { color, border } from '../../utils/color'
 import Button from '../other/Button'
-import { useSelector, useDispatch } from 'react-redux'
-
 import DropDownIcon from '../other/DropDownIcon'
+import Loader from '../other/Loader'
 import Repo from './Repo'
+import InfiniteScroll from '../other/InfiniteScroll'
 
 import {
   fetchRepos,
-  selectRepoIds
+  selectRepoIds,
+  selectRepoIdsPart,
+  moreData
 } from './reposSlice'
-import { useEffect } from 'react'
 
 const StyledRepositories = styled.div`
 width: 75%;
@@ -71,6 +75,10 @@ function Repositories() {
   const dispatch = useDispatch()
   const repoStatus = useSelector((state) => state.repos.repoStatus)
   const repoIds = useSelector(selectRepoIds)
+  const page = useSelector((state) => state.repos.page)
+  const repoIdsPart = useSelector((state) => selectRepoIdsPart(state, page))
+
+  const [hasMoreData, setHasMoreData] = useState(false)
 
   useEffect(() => {
     function initailize() {
@@ -81,15 +89,23 @@ function Repositories() {
     initailize()
   })
 
+  useEffect(() => {
+    repoIds.length > repoIdsPart.length ? setHasMoreData(true) : setHasMoreData(false)
+  }, [repoIds, repoIdsPart])
+
   let content
   if (repoStatus === 'loading') {
     content = <Repo type="loading"></Repo>
   } 
   else if (repoStatus === 'succeeded') {
-    content = repoIds.map((repoId) => <Repo key={repoId} repoId={repoId} type="normal"> </Repo>)
+    content = repoIdsPart.map((repoId) => <Repo key={repoId} repoId={repoId} type="normal"> </Repo>)
   }
   else if (repoStatus === 'failed') {
     content = <Repo type="failed"> </Repo>
+  }
+
+  const fetchMoreData = () => {
+    dispatch(moreData())
   }
 
   return (
@@ -123,7 +139,18 @@ function Repositories() {
           <BorderLine/>
         </WrapperTopContainer>
 
-        {content}
+        <InfiniteScroll
+          dataLength={repoIdsPart}
+          next={() => {
+            dispatch(moreData())
+          }}
+          hasMore={hasMoreData}
+          loader={<Loader/>}
+        >
+
+          {content}
+
+        </InfiniteScroll>
 
       </Container>
     </StyledRepositories>

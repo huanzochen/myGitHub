@@ -22,7 +22,7 @@ function InfiniteScroll({
     // 被綁定 ref 的該原生 DOM 是否已經觸底.
     const onScroll = () => {
       if (hasMore && isBottom(refDiv)) {
-        console.log('載入更多資料中...')
+        // 載入更多資料中...
         next()
         setIsLoading(true)
       }
@@ -33,7 +33,7 @@ function InfiniteScroll({
 
   useEffect(() => {
     if (checkDataLenth !== dataLength) {
-      console.log('資料已經有變動...')
+      // 資料已經有變動...
       setIsLoading(false)
       setCheckDataLenth(dataLength)
     }
