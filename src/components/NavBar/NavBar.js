@@ -5,7 +5,7 @@ import { faBell } from '@fortawesome/free-regular-svg-icons'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
 import { color } from '../../utils/color'
 
-import DropDown from '../other/DropDown'
+import DropDownIcon from '../other/DropDownIcon'
 import AvatarImg from '../../img/avatar.jpg'
 
 const StyledNavBar = styled.div`
@@ -95,9 +95,9 @@ function NavBar() {
         <Profile>
           <FontAwesomeIcon icon={faBell} className="icon leftspace"></FontAwesomeIcon>
           <FontAwesomeIcon icon={faPlus} className="icon small leftspace"></FontAwesomeIcon>
-          <DropDown color={color.white}></DropDown>
+          <DropDownIcon color={color.white}></DropDownIcon>s
           <Avatar></Avatar>
-          <DropDown color={color.white}></DropDown>
+          <DropDownIcon color={color.white}></DropDownIcon>
         </Profile>
       </Container>
     </StyledNavBar>

@@ -5,7 +5,7 @@ import { color, border } from '../../utils/color'
 import Button from '../other/Button'
 import { useSelector, useDispatch } from 'react-redux'
 
-import DropDown from '../other/DropDown'
+import DropDownIcon from '../other/DropDownIcon'
 import Repo from './Repo'
 
 import {
@@ -102,15 +102,15 @@ function Repositories() {
               <ClassifyButton>
                 <Button theme='main'>
                 Type
-                  <DropDown color={color.primary}></DropDown>
+                  <DropDownIcon color={color.primary}></DropDownIcon>
                 </Button>
                 <Button theme='main'>
                 Language
-                  <DropDown color={color.primary}></DropDown>
+                  <DropDownIcon color={color.primary}></DropDownIcon>
                 </Button>
                 <Button theme='main'>
                 Sort
-                  <DropDown color={color.primary}></DropDown>
+                  <DropDownIcon color={color.primary}></DropDownIcon>
                 </Button>
 
               </ClassifyButton>

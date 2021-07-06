@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { color } from '../../utils/color'
 
-const StyledDropDown = styled.div`
+const StyledDropDownIcon = styled.div`
 margin-left: 5px;
 margin-top: 3px;
 border-top: 5px solid ${props => props.color ? props.color : color.primary};
@@ -9,10 +9,10 @@ border-right: 5px solid transparent;
 border-left: 5px solid transparent;
 `
 
-function DropDown(props) { 
+function DropDownIcon(props) { 
   return (
-    <StyledDropDown color={props.color}></StyledDropDown>
+    <StyledDropDownIcon color={props.color}></StyledDropDownIcon>
   )
 }
 
-export default DropDown
+export default DropDownIcon
