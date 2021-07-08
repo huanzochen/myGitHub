@@ -25,7 +25,8 @@ flex-direction: column;
 
 const Avatar = styled.img.attrs(props => ({
   src: AvatarImg
-}))`
+}))
+`
 width: 250px;
 height: 250px;
 border-radius: 50%;
@@ -82,7 +83,8 @@ border-bottom: 1px solid ${border.main};
 
 const Achievement = styled.img.attrs(props => ({
   src: AvatarImg
-}))`
+}))
+`
 width: 40px;
 height: 40px;
 border-radius: 50%;
@@ -90,7 +92,8 @@ border-radius: 50%;
 
 const Organizations = styled.img.attrs(props => ({
   src: AvatarImg
-}))`
+}))
+`
 width: 40px;
 height: 40px;
 border-radius: 50%;
