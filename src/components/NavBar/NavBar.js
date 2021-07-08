@@ -1,15 +1,24 @@
 import styled from 'styled-components'
+import { useState } from 'react'
+import classNames from 'classnames'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAndroid } from '@fortawesome/free-brands-svg-icons'
 import { faBell } from '@fortawesome/free-regular-svg-icons'
-import { faPlus } from '@fortawesome/free-solid-svg-icons'
-import { color } from '../../utils/color'
+import { faPlus, faHamburger } from '@fortawesome/free-solid-svg-icons'
 
+import { color } from '../../utils/color'
 import DropDownIcon from '../other/DropDownIcon'
 import AvatarImg from '../../img/avatar.jpg'
+import device from '../../utils/device'
 
 const StyledNavBar = styled.div`
 background-color: ${color.primary};
+.menu {
+  display: none;
+}
+.logo {
+  margin-right: 9px;
+}
 .icon{
   color: ${color.second};
   width: 17px;
@@ -17,6 +26,10 @@ background-color: ${color.primary};
   &.small{
     width: 13px;
     height: 15px;
+  }
+  &.medium {
+    width: 25px;
+    height: 25px;
   }
   &.big{
     width: 35px;
@@ -29,21 +42,64 @@ background-color: ${color.primary};
     margin-right: 9px;
   }
 }
+
+@media ${device.mobileL} {
+  .menu {
+    display:block;
+  }
+  .logo {
+    margin-right: 0px;
+  }
+}
 `
 
 const Container = styled.div`
 display: flex;
 flex-direction: row;
 align-items: center;
-padding: 10px;
+padding: 20px 30px 20px 30px;
+
+input {
+  margin: 0px 10px 0px 10px;
+}
+img {
+  margin-left: 19px;
+}
+
+@media ${device.mobileL} {
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 10px 20px 10px 20px;
+}
+`
+
+const WrapperA = styled.div`
+width: 100%;
+a {
+  padding:  0 0.6em 0 0.6em;
+}
+
+@media ${device.mobileL} {
+  display: flex;
+  flex-direction: column;
+  order:2;
+
+  &.active {
+    display: none;
+  } 
+
+  input,a {
+    margin: 10px 0 10px 0;
+  }
+}
 `
 
 const Input = styled.input.attrs(props => ({
   size: props.size || '10px'
-}))`
+}))
+`
 border: 2px solid ${color.pink};
 border-radius: 8px;
-margin: ${props => props.size};
 padding: ${props => props.size};
 
 :focus{
@@ -51,15 +107,9 @@ outline:none
 }
 `
 
-const WrapperA = styled.div`
-width: 100%;
-`
-
 const A = styled.a`
 color: ${color.second};
 font-weight: 500;
-margin: 0.3em;
-padding: 0.3em;
 `
 
 const Profile = styled.div`
@@ -67,35 +117,48 @@ display: flex;
 flex-direction: row;
 justify-content: flex-end;
 align-items: center;
-margin-right: 20px;
+
+@media ${device.mobileL} {
+    display:none;
+}
 `
 
 const Avatar = styled.img.attrs(props => ({
   src: AvatarImg
-}))`
-margin-left: 19px;
+}))
+`
 border-radius: 50%;
-width:20px;
-height:20px;
+width: 20px;
+height: 20px;
 `
 
 
+
 function NavBar() {
+  const [isClick, setIsClick] = useState(false)
+
+  const handleClick = () => setIsClick(!isClick)
+
   return (
     <StyledNavBar>
       <Container>
-        <FontAwesomeIcon icon={faAndroid} className="icon big leftspace rightspace"></FontAwesomeIcon>
-        <Input></Input>
-        <WrapperA>
+        <div className="menu" onClick={handleClick}>
+          <FontAwesomeIcon icon={faHamburger} className="icon medium"></FontAwesomeIcon>
+        </div>
+        <div className="logo">
+          <FontAwesomeIcon icon={faAndroid} className="icon big"></FontAwesomeIcon>
+        </div>
+        <WrapperA className={isClick ? classNames({ active: true }) : classNames({ active: false })}>
+          <Input></Input>
           <A>Pulls</A>
           <A>Issues</A>
           <A>Marketplace</A>
           <A>Explore</A>
         </WrapperA>
+        <FontAwesomeIcon icon={faBell} className="icon"></FontAwesomeIcon>
         <Profile>
-          <FontAwesomeIcon icon={faBell} className="icon leftspace"></FontAwesomeIcon>
           <FontAwesomeIcon icon={faPlus} className="icon small leftspace"></FontAwesomeIcon>
-          <DropDownIcon color={color.white}></DropDownIcon>s
+          <DropDownIcon color={color.white}></DropDownIcon>
           <Avatar></Avatar>
           <DropDownIcon color={color.white}></DropDownIcon>
         </Profile>
