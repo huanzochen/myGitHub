@@ -6,7 +6,7 @@ import { faAndroid } from '@fortawesome/free-brands-svg-icons'
 import { faBell } from '@fortawesome/free-regular-svg-icons'
 import { faPlus, faHamburger } from '@fortawesome/free-solid-svg-icons'
 
-import { color } from '../../utils/color'
+import { color, border } from '../../utils/color'
 import DropDownIcon from '../other/DropDownIcon'
 import AvatarImg from '../../img/avatar.jpg'
 import device from '../../utils/device'
@@ -58,10 +58,6 @@ display: flex;
 flex-direction: row;
 align-items: center;
 padding: 20px 30px 20px 30px;
-
-input {
-  margin: 0px 10px 0px 10px;
-}
 img {
   margin-left: 19px;
 }
@@ -75,8 +71,9 @@ img {
 
 const WrapperA = styled.div`
 width: 100%;
-a {
-  padding:  0 0.6em 0 0.6em;
+
+input,a {
+  margin: 0px 10px 0px 10px;
 }
 
 @media ${device.mobileL} {
@@ -88,9 +85,15 @@ a {
     display: none;
   } 
 
-  input,a {
-    margin: 10px 0 10px 0;
+  input {
+    margin: 10px 10px 10px 10px;
   }
+  a {
+    padding: 10px 10px 10px 0px;
+    border-bottom: 1px solid ${border.main}; 
+  }
+
+
 }
 `
 
