@@ -3,10 +3,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUsers } from '@fortawesome/free-solid-svg-icons'
 import { faInbox } from '@fortawesome/free-solid-svg-icons'
 import { faStar } from '@fortawesome/free-regular-svg-icons'
+
 import { color, border } from '../../utils/color'
 import Button from '../other/Button'
 import AvatarImg from '../../img/avatar.jpg'
-
+import device from '../../utils/device'
 
 const StyledProfile = styled.div`
 `
@@ -21,6 +22,25 @@ flex-direction: column;
 .button-wrapper{
   width: 100%;
 }
+
+@media ${device.mobileL} {
+  margin: 0 0 0 0;
+  padding: 0px 15px 0 15px;
+}
+`
+
+const WrapperUser = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  @media ${device.mobileL} {
+    flex-direction: row;
+    align-items: center;
+
+    * {
+      margin-right: 20px;
+    }
+  }
 `
 
 const Avatar = styled.img.attrs(props => ({
@@ -30,6 +50,11 @@ const Avatar = styled.img.attrs(props => ({
 width: 250px;
 height: 250px;
 border-radius: 50%;
+
+@media ${device.mobileL} {
+  width: 50px;
+  height: 50px;
+}
 `
 
 const Name = styled.h1`
@@ -104,11 +129,13 @@ function Profile() {
   return (
     <StyledProfile>
       <Container>
-        <Avatar></Avatar>
-        <Name>
-          <span className="name">huanzo86</span>
-          <span className="nickname">huanzochen</span>
-        </Name>
+        <WrapperUser>
+          <Avatar></Avatar>
+          <Name>
+            <span className="name">huanzo86</span>
+            <span className="nickname">huanzochen</span>
+          </Name>
+        </WrapperUser>
         <Button theme='main'>
           <div className='button-wrapper'>Edit Profile</div>
         </Button>
