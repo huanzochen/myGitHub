@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlusSquare } from '@fortawesome/free-solid-svg-icons'
 
+import FunctionBar from '../FunctionBar/FunctionBar'
 import { color, border } from '../../utils/color'
 import Button from '../other/Button'
 import DropDownIcon from '../other/DropDownIcon'
@@ -111,6 +112,7 @@ function Repositories() {
   return (
     <StyledRepositories>
       <Container>
+        <FunctionBar justify_content='flex-start' mediaType='mobile'></FunctionBar>
         <WrapperTopContainer>
           <WrapperTop>
             <Bar>

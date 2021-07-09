@@ -4,14 +4,34 @@ import { faBookReader } from '@fortawesome/free-solid-svg-icons'
 import { faFolderOpen } from '@fortawesome/free-solid-svg-icons'
 import { faProjectDiagram } from '@fortawesome/free-solid-svg-icons'
 import { faCubes } from '@fortawesome/free-solid-svg-icons'
+
 import { color, border } from '../../utils/color'
+import device from '../../utils/device'
 
 const StyledFunctionBar = styled.div`
 border-bottom: 1px solid ${border.main};
+${props => {
+    if (props.mediaType === 'mobile') {
+      return `
+      display: none;
+      @media ${device.mobileL} {
+        display: block;
+      }
+      `
+    }
+    else {
+      return `
+        display: block;
+        @media ${device.mobileL} {
+          display: none;
+        }
+      `
+    }
+  }}
 `
 const Container = styled.div`
 display:flex;
-justify-content:center;
+justify-content: ${props => props.justify_content ? props.justify_content : 'center'} ;
 `
 
 const FunctionButton = styled.div`
@@ -34,11 +54,13 @@ margin-left:10px;
 }
 `
 
-function FunctionBar() {
+function FunctionBar({
+  justify_content,
+  mediaType
+}) {
   return (
-    <StyledFunctionBar>
-      <Container>
-
+    <StyledFunctionBar mediaType={mediaType}>
+      <Container justify_content={justify_content}>
         <FunctionButton>
           <FontAwesomeIcon icon={faBookReader}></FontAwesomeIcon>
           <p className='wrapper'>Overview</p>
