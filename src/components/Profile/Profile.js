@@ -7,7 +7,7 @@ import { faStar } from '@fortawesome/free-regular-svg-icons'
 import { color, border } from '../../utils/color'
 import Button from '../other/Button'
 import AvatarImg from '../../img/avatar.jpg'
-import device from '../../utils/device'
+import { device } from '../../utils/device'
 
 const StyledProfile = styled.div`
 `
@@ -18,10 +18,6 @@ padding-left: 30px;
 padding-right: 15px;
 display: flex;
 flex-direction: column;
-
-.button-wrapper{
-  width: 100%;
-}
 
 @media ${device.mobileL} {
   margin: 0 0 0 0;
@@ -137,7 +133,7 @@ function Profile() {
           </Name>
         </WrapperUser>
         <Button theme='main'>
-          <div className='button-wrapper'>Edit Profile</div>
+          Edit Profile
         </Button>
         <ProfileLabel type="description">
           <FontAwesomeIcon icon={faUsers} className='icon-wrapper'></FontAwesomeIcon>

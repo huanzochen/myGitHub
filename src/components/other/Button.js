@@ -4,11 +4,13 @@ import { color, border, button } from '../../utils/color'
 
 const StyledButton = styled.button.attrs(props => ({
   type: 'button'
-}))`
+}))
+`
     display: flex;
     flex-direction: row;
+    justify-content: center;
     align-items: center;
-    padding: 5px 16px;
+    padding: 6px 16px;
     font-size: 13px;
     font-weight: 600;
     font-family: system-ui;
@@ -54,10 +56,14 @@ const StyledButton = styled.button.attrs(props => ({
 
 `
 
-function Button (props) {
+function Button ({
+  theme,
+  children,
+  className
+}) {
   return (
-    <StyledButton theme={`${props.theme}`}>
-      {props.children}
+    <StyledButton theme={`${theme}`} className={className}>
+      {children}
     </StyledButton>
   )
 }

@@ -3,7 +3,7 @@ import NavBar from './components/NavBar/NavBar'
 import FunctionBar from './components/FunctionBar/FunctionBar'
 import Profile from './components/Profile/Profile'
 import Repositories from './components/Repositories/Repositories'
-import device from './utils/device'
+import { device } from './utils/device'
 
 const StyledApp = styled.div`
 *, *::before, *::after {

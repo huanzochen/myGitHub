@@ -9,7 +9,7 @@ import { faPlus, faHamburger } from '@fortawesome/free-solid-svg-icons'
 import { color, border } from '../../utils/color'
 import DropDownIcon from '../other/DropDownIcon'
 import AvatarImg from '../../img/avatar.jpg'
-import device from '../../utils/device'
+import { device } from '../../utils/device'
 
 const StyledNavBar = styled.div`
 background-color: ${color.primary};
@@ -77,12 +77,12 @@ input,a {
 }
 
 @media ${device.mobileL} {
-  display: flex;
-  flex-direction: column;
-  order:2;
+  display: none;
 
   &.active {
-    display: none;
+    display: flex;
+    flex-direction: column;
+    order:2;
   } 
 
   input {
@@ -106,7 +106,7 @@ border-radius: 8px;
 padding: ${props => props.size};
 
 :focus{
-outline:none
+  outline:none
 }
 `
 

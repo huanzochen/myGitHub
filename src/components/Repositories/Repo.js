@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux'
 import { formatDistance } from 'date-fns'
 
 import { color, border } from '../../utils/color'
+import { device } from '../../utils/device'
 import Button from '../other/Button'
 import Loader from '../other/Loader'
 import AvatarImg from '../../img/avatar.jpg'
@@ -70,6 +71,10 @@ const Activity = styled.img.attrs(props => ({
 `
   width: 40px;
   height: 40px;
+
+  @media ${device.mobileL} {
+    display: none;
+  }
 `
 
 const BorderLine = styled.div`

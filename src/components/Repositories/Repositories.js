@@ -4,8 +4,9 @@ import styled from 'styled-components'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlusSquare } from '@fortawesome/free-solid-svg-icons'
 
-import FunctionBar from '../FunctionBar/FunctionBar'
 import { color, border } from '../../utils/color'
+import { device } from '../../utils/device'
+import FunctionBar from '../FunctionBar/FunctionBar'
 import Button from '../other/Button'
 import DropDownIcon from '../other/DropDownIcon'
 import Loader from '../other/Loader'
@@ -21,6 +22,10 @@ import {
 
 const StyledRepositories = styled.div`
 width: 75%;
+
+@media ${device.mobileL} {
+  width: 100%;
+}
 `
 
 const Container = styled.div`
@@ -39,13 +44,32 @@ margin-bottom: 15px;
 .wrapper {
   margin-right: 5px;
 }
+
+@media ${device.mobileL} {
+  flex-direction: column;
+  
+  .newbutton {
+    order:-1;
+  }
+
+  & > button {
+    margin-bottom: 25px;
+  }
+}
 `
 
 const Bar = styled.div`
 display: flex;
 flex-direction: row;
-align-items: center;
 flex-grow: 1;
+
+@media ${device.mobileL} {
+  flex-direction: column;
+
+  & > input {
+    margin-bottom: 10px;
+  }
+}
 `
 
 const SearchBar = styled.input`
@@ -55,16 +79,29 @@ border: 2px solid ${border.main};
 padding: 5px;
 border-radius: 5px;
 margin-right: 10px; 
+
+@media ${device.mobileL} {
+  margin-right: 0px; 
+}
 `
 
 const ClassifyButton = styled.div`
 flex-grow: 1;
 display: flex;
 flex-direction: row;
+
 button{
   margin-left: 5px;
   margin-right: 2px;
 }
+
+@media ${device.mobileL} {
+  button{
+    margin-left: 0px;
+    margin-right: 3px;
+  }
+}
+
 `
 
 const BorderLine = styled.div`
@@ -130,12 +167,11 @@ function Repositories() {
                 Sort
                   <DropDownIcon color={color.primary}></DropDownIcon>
                 </Button>
-
               </ClassifyButton>
             </Bar>
-            <Button theme='new'>
+            <Button theme="new" className="newbutton">
               <FontAwesomeIcon icon={faPlusSquare} className='wrapper'></FontAwesomeIcon>
-            New
+              New
             </Button>
           </WrapperTop>
           <BorderLine/>

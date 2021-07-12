@@ -6,7 +6,7 @@ import { faProjectDiagram } from '@fortawesome/free-solid-svg-icons'
 import { faCubes } from '@fortawesome/free-solid-svg-icons'
 
 import { color, border } from '../../utils/color'
-import device from '../../utils/device'
+import { device } from '../../utils/device'
 
 const StyledFunctionBar = styled.div`
 border-bottom: 1px solid ${border.main};
