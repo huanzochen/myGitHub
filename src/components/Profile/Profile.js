@@ -1,3 +1,5 @@
+import { useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
 import styled from 'styled-components'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUsers } from '@fortawesome/free-solid-svg-icons'
@@ -8,6 +10,10 @@ import { color, border } from '../../utils/color'
 import Button from '../other/Button'
 import AvatarImg from '../../img/avatar.jpg'
 import { device } from '../../utils/device'
+
+import { 
+  fetchUser
+} from './userSlice'
 
 const StyledProfile = styled.div`
 `
@@ -122,6 +128,18 @@ border-radius: 50%;
 
 
 function Profile() {
+  const dispatch = useDispatch()
+  const userStatus = useSelector(state => state.user.userStatus)
+
+  useEffect(() => {
+    function initialize() {
+      if (userStatus === 'idle') {
+        dispatch(fetchUser())
+      }
+    }
+    initialize()
+  })
+
   return (
     <StyledProfile>
       <Container>

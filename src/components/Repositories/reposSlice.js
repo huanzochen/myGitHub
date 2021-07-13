@@ -11,7 +11,7 @@ const initialState = reposAdapter.getInitialState({
   error: 'null'
 })
 
-export const fetchRepos = createAsyncThunk('github/fetchRepos', async() => {
+export const fetchRepos = createAsyncThunk('repos/fetchRepos', async() => {
   let headersList = {
     'Accept': 'application/vnd.github.v3+json',
     'User-Agent': 'Thunder Client (https://www.thunderclient.io)'
