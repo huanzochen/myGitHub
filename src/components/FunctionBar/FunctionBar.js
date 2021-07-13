@@ -10,28 +10,9 @@ import { device } from '../../utils/device'
 
 const StyledFunctionBar = styled.div`
 border-bottom: 1px solid ${border.main};
-${props => {
-    if (props.mediaType === 'mobile') {
-      return `
-      display: none;
-      @media ${device.mobileL} {
-        display: block;
-      }
-      `
-    }
-    else {
-      return `
-        display: block;
-        @media ${device.mobileL} {
-          display: none;
-        }
-      `
-    }
-  }}
 `
 const Container = styled.div`
 display:flex;
-justify-content: ${props => props.justify_content ? props.justify_content : 'center'} ;
 `
 
 const FunctionButton = styled.div`
@@ -55,12 +36,12 @@ margin-left:10px;
 `
 
 function FunctionBar({
-  justify_content,
-  mediaType
+  StyledFunctionBarClassName,
+  ContainerClassName
 }) {
   return (
-    <StyledFunctionBar mediaType={mediaType}>
-      <Container justify_content={justify_content}>
+    <StyledFunctionBar className={StyledFunctionBarClassName}>
+      <Container className={ContainerClassName}>
         <FunctionButton>
           <FontAwesomeIcon icon={faBookReader}></FontAwesomeIcon>
           <p className='wrapper'>Overview</p>

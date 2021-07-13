@@ -11,6 +11,19 @@ const StyledApp = styled.div`
 }
 display: flex;
 flex-direction: column;
+
+.desktop {
+  display: block;
+  .container {
+    justify-content: center;
+  }
+}
+
+@media ${device.mobileL} {
+  .desktop {
+    display: none;
+  }
+}
 `
 
 const MainPage = styled.div`
@@ -34,7 +47,7 @@ function App() {
   return (
     <StyledApp>
       <NavBar></NavBar>
-      <FunctionBar></FunctionBar>
+      <FunctionBar StyledFunctionBarClassName="desktop" ContainerClassName="container"></FunctionBar>
       <MainPage>
         <Container>
           <Profile></Profile>

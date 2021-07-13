@@ -22,6 +22,7 @@ const Container = styled.div`
 display: flex;
 flex-direction: row;
 justify-content: space-between;
+align-items: center;
 padding-bottom: 15px;
 `
 
@@ -33,6 +34,7 @@ const Title = styled.a`
 font-size: 22px;
 font-weight: 500;
 margin-bottom: 10px;
+word-break: break-all;
 `
 const Description = styled.div`
 margin-bottom: 10px;

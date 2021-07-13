@@ -23,8 +23,19 @@ import {
 const StyledRepositories = styled.div`
 width: 75%;
 
+.mobile {
+  display: none;
+}
+
 @media ${device.mobileL} {
   width: 100%;
+  .mobile {
+    display: block;
+    overflow-x: auto;
+    .container {
+      justify-content: flex-start;
+    }
+  }
 }
 `
 
@@ -149,7 +160,7 @@ function Repositories() {
   return (
     <StyledRepositories>
       <Container>
-        <FunctionBar justify_content='flex-start' mediaType='mobile'></FunctionBar>
+        <FunctionBar StyledFunctionBarClassName="mobile" ContainerClassName="container"></FunctionBar>
         <WrapperTopContainer>
           <WrapperTop>
             <Bar>
