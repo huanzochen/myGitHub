@@ -130,12 +130,12 @@ function Repositories() {
   const [hasMoreData, setHasMoreData] = useState(false)
 
   useEffect(() => {
-    function initailize() {
+    function initialize() {
       if (repoStatus === 'idle') {
         dispatch(fetchRepos())
       }
     }
-    initailize()
+    initialize()
   })
 
   useEffect(() => {
@@ -151,10 +151,6 @@ function Repositories() {
   }
   else if (repoStatus === 'failed') {
     content = <Repo type="failed"> </Repo>
-  }
-
-  const fetchMoreData = () => {
-    dispatch(moreData())
   }
 
   return (
