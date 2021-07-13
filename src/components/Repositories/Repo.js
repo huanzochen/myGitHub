@@ -43,6 +43,7 @@ width: 75%;
 const Type = styled.div`
 display: flex;
 flex-direction: row;
+flex-wrap: wrap;
 font-size: 10px;
 * {
   margin-right: 2px;
