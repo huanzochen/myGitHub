@@ -62,6 +62,6 @@ export const selectRepoIdsPart = createSelector(
   selectRepoIds,
   (state, pagination) => pagination,
   (repoIds, pagination) => {
-    return repoIds.slice(0, pagination * 6)
+    return repoIds.slice(0, pagination * 8)
   }
 )

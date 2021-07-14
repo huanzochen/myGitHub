@@ -8,7 +8,7 @@ import { color, border } from '../../utils/color'
 import { device } from '../../utils/device'
 import Button from '../other/Button'
 import Loader from '../other/Loader'
-import AvatarImg from '../../img/avatar.jpg'
+import AvatarImg from '../../img/exampleAvatar.jpg'
 
 import {
   selectRepoById

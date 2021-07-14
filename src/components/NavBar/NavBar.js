@@ -1,5 +1,6 @@
 import styled from 'styled-components'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
 import classNames from 'classnames'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAndroid } from '@fortawesome/free-brands-svg-icons'
@@ -8,8 +9,12 @@ import { faPlus, faHamburger } from '@fortawesome/free-solid-svg-icons'
 
 import { color, border } from '../../utils/color'
 import DropDownIcon from '../other/DropDownIcon'
-import AvatarImg from '../../img/avatar.jpg'
+// import AvatarImg from '../../img/exampleAvatar.jpg'
 import { device } from '../../utils/device'
+
+import { 
+  fetchUserData
+} from '../Profile/userSlice'
 
 const StyledNavBar = styled.div`
 background-color: ${color.primary};
@@ -127,7 +132,7 @@ align-items: center;
 `
 
 const Avatar = styled.img.attrs(props => ({
-  src: AvatarImg
+  src: props.src
 }))
 `
 border-radius: 50%;
@@ -138,9 +143,21 @@ height: 20px;
 
 
 function NavBar() {
+  const dispatch = useDispatch()
+  const userDataStatus = useSelector(state => state.user.userDataStatus)
+  const userData = useSelector(state => state.user.data)
   const [isClick, setIsClick] = useState(false)
-
   const handleClick = () => setIsClick(!isClick)
+
+  useEffect(() => {
+    function initialize() {
+      if (userDataStatus === 'idle') {
+        dispatch(fetchUserData())
+      }
+    }
+    initialize()
+  })
+
 
   return (
     <StyledNavBar>
@@ -162,7 +179,7 @@ function NavBar() {
         <Profile>
           <FontAwesomeIcon icon={faPlus} className="icon small leftspace"></FontAwesomeIcon>
           <DropDownIcon color={color.white}></DropDownIcon>
-          <Avatar></Avatar>
+          <Avatar src={userData.avatar_url}></Avatar>
           <DropDownIcon color={color.white}></DropDownIcon>
         </Profile>
       </Container>

@@ -8,12 +8,15 @@ import { faStar } from '@fortawesome/free-regular-svg-icons'
 
 import { color, border } from '../../utils/color'
 import Button from '../other/Button'
-import AvatarImg from '../../img/avatar.jpg'
 import { device } from '../../utils/device'
 
 import { 
-  fetchUser
+  fetchUserStarred,
+  fetchUserOrganization
 } from './userSlice'
+
+// Example Avatar image
+// import AvatarImg from '../../img/exampleAvatar.jpg' 
 
 const StyledProfile = styled.div`
 `
@@ -46,7 +49,7 @@ const WrapperUser = styled.div`
 `
 
 const Avatar = styled.img.attrs(props => ({
-  src: AvatarImg
+  src: props.src
 }))
 `
 width: 250px;
@@ -109,7 +112,7 @@ border-bottom: 1px solid ${border.main};
 `
 
 const Achievement = styled.img.attrs(props => ({
-  src: AvatarImg
+  src: props.src
 }))
 `
 width: 40px;
@@ -118,7 +121,7 @@ border-radius: 50%;
 `
 
 const Organizations = styled.img.attrs(props => ({
-  src: AvatarImg
+  src: props.src
 }))
 `
 width: 40px;
@@ -129,12 +132,19 @@ border-radius: 50%;
 
 function Profile() {
   const dispatch = useDispatch()
-  const userStatus = useSelector(state => state.user.userStatus)
+  const userStarredStatus = useSelector(state => state.user.userStarredStatus)
+  const userOrganizationStatus = useSelector(state => state.user.userOrganizationStatus)
+  const userData = useSelector(state => state.user.data)
+  const userStarred = useSelector(state => state.user.starred)
+  const userOrganization = useSelector(state => state.user.organization)
 
   useEffect(() => {
     function initialize() {
-      if (userStatus === 'idle') {
-        dispatch(fetchUser())
+      if (userStarredStatus === 'idle') {
+        dispatch(fetchUserStarred())
+      }
+      if (userOrganizationStatus === 'idle') {
+        dispatch(fetchUserOrganization())
       }
     }
     initialize()
@@ -144,10 +154,10 @@ function Profile() {
     <StyledProfile>
       <Container>
         <WrapperUser>
-          <Avatar></Avatar>
+          <Avatar src={userData.avatar_url}></Avatar>
           <Name>
-            <span className="name">huanzo86</span>
-            <span className="nickname">huanzochen</span>
+            <span className="name">{userData.name}</span>
+            <span className="nickname">{userData.login}</span>
           </Name>
         </WrapperUser>
         <Button theme='main'>
@@ -155,29 +165,32 @@ function Profile() {
         </Button>
         <ProfileLabel type="description">
           <FontAwesomeIcon icon={faUsers} className='icon-wrapper'></FontAwesomeIcon>
-          <span className='text-wrapper'>14</span>
+          <span className='text-wrapper'>{userData.followers}</span>
           <span className='text-wrapper'>followers</span>
           <span className='text-wrapper'> · </span>
-          <span className='text-wrapper'>14</span>
+          <span className='text-wrapper'>{userData.following}</span>
           <span className='text-wrapper'>following</span>
           <span className='text-wrapper'> · </span>
           <FontAwesomeIcon icon={faStar} className='icon-wrapper'></FontAwesomeIcon>
-          <span className='text-wrapper'>35</span>
+          <span className='text-wrapper'>{userStarred.length}</span>
         </ProfileLabel>
-        <ProfileLabel type="description">
-          <FontAwesomeIcon icon={faInbox} className='icon-wrapper'></FontAwesomeIcon>
-          <span className='text-wrapper'>cy94295@gmail.com</span>
-        </ProfileLabel>
-
+        { userData.email ? 
+          <ProfileLabel type="description">
+            <FontAwesomeIcon icon={faInbox} className='icon-wrapper'></FontAwesomeIcon>
+            <span className='text-wrapper'>cy94295@gmail.com</span>
+          </ProfileLabel> : ''
+        }
         <BorderLine/>
-        <ProfileLabel type='achievment'>
+        {/* <ProfileLabel type='achievment'>
           <span className='title'>Achievements</span>
-          <Achievement/>
+          <Achievement src={userData.avatar_url}/>
         </ProfileLabel>
-        <BorderLine/>
+        <BorderLine/> */}
         <ProfileLabel type='achievment'>
           <span className='title'>Organizations</span>
-          <Organizations/>
+          {
+            userOrganization.map((org) => <Organizations key={org.id} src={org.avatar_url}/>)
+          }
         </ProfileLabel>
       </Container>
 
