@@ -129,7 +129,6 @@ height: 40px;
 border-radius: 50%;
 `
 
-
 function Profile() {
   const dispatch = useDispatch()
   const userStarredStatus = useSelector(state => state.user.userStarredStatus)
@@ -193,10 +192,8 @@ function Profile() {
           }
         </ProfileLabel>
       </Container>
-
     </StyledProfile>
   )
 }
-
 
 export default Profile

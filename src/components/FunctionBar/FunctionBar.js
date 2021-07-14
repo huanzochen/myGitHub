@@ -63,7 +63,6 @@ function FunctionBar({
       </Container>
     </StyledFunctionBar>
   )
-
 }
 
 export default FunctionBar
