@@ -17,7 +17,7 @@ export const fetchRepos = createAsyncThunk('repos/fetchRepos', async() => {
     'User-Agent': 'Thunder Client (https://www.thunderclient.io)'
   }
 
-  const response = await fetch('https://api.github.com/users/huanzochen/repos?sort=pushed', {
+  const response = await fetch('https://api.github.com/users/huanzochen/repos?sort=pushed&per_page=100', {
     method: 'GET',
     headers: headersList
   })
@@ -55,7 +55,8 @@ export default reposSlice.reducer
 
 export const {
   selectIds: selectRepoIds,
-  selectById: selectRepoById
+  selectById: selectRepoById,
+  selectAll: selectAllRepos
 } = reposAdapter.getSelectors(state => state.repos)
 
 export const selectRepoIdsPart = createSelector(

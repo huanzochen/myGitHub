@@ -15,7 +15,8 @@ import {
   fetchRepos,
   selectRepoIds,
   selectRepoIdsPart,
-  moreData
+  moreData,
+  selectAllRepos
 } from './reposSlice'
 
 import {
@@ -35,8 +36,11 @@ function Repositories() {
   const repoIds = useSelector(selectRepoIds)
   const page = useSelector((state) => state.repos.page)
   const repoIdsPart = useSelector((state) => selectRepoIdsPart(state, page))
+  const allRepos = useSelector(selectAllRepos)
 
   const [hasMoreData, setHasMoreData] = useState(false)
+  const [searchValue, setSearchValue] = useState('') 
+  const [searchedRepoIds, setSearchedRepoIds] = useState([])
 
   useEffect(() => {
     function initialize() {
@@ -50,6 +54,18 @@ function Repositories() {
   useEffect(() => {
     repoIds.length > repoIdsPart.length ? setHasMoreData(true) : setHasMoreData(false)
   }, [repoIds, repoIdsPart])
+
+  useEffect(() => {
+    const re = new RegExp(searchValue.toLowerCase(), 'g')
+    const searchResultIds = allRepos.filter((data) => {
+      return data.name.toLowerCase().match(re)
+    }).map((data) => data.id)
+    setSearchedRepoIds(searchResultIds)
+  }, [searchValue, setSearchValue, allRepos, setSearchedRepoIds])
+
+  const handleSearchChange = (e) => {
+    setSearchValue(e.target.value)
+  }
 
   let content
   if (repoStatus === 'loading') {
@@ -69,7 +85,7 @@ function Repositories() {
         <WrapperTopContainer>
           <WrapperTop>
             <Bar>
-              <SearchBar/>
+              <SearchBar name="search" value={searchValue} onChange={handleSearchChange}/>
               <ClassifyButton>
                 <Button theme='main'>
                 Type
@@ -93,18 +109,29 @@ function Repositories() {
           <BorderLine/>
         </WrapperTopContainer>
 
-        <InfiniteScroll
-          dataLength={repoIdsPart}
-          next={() => {
-            dispatch(moreData())
-          }}
-          hasMore={hasMoreData}
-          loader={<Loader/>}
-        >
+        {(() => {
+          if (searchValue === '') {
+            return (
+              <InfiniteScroll
+                dataLength={repoIdsPart}
+                next={() => {
+                  dispatch(moreData())
+                }}
+                hasMore={hasMoreData}
+                loader={<Loader/>}
+              >
+                {content}
+              </InfiniteScroll>
+            )
+          } 
+          else { 
+            return (
+              searchedRepoIds.map((repoId) => <Repo key={repoId} repoId={repoId} type="normal"> </Repo>)
+            )
+          }
+        })()
+        }
 
-          {content}
-
-        </InfiniteScroll>
 
       </Container>
     </StyledRepositories>
