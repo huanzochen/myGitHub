@@ -83,6 +83,10 @@ flex-grow: 1;
 display: flex;
 flex-direction: row;
 
+.hide {
+  display: none;  
+}
+
 button{
   margin-left: 5px;
   margin-right: 2px;

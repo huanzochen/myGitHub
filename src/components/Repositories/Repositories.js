@@ -42,6 +42,12 @@ function Repositories() {
   const [hasMoreData, setHasMoreData] = useState(false)
   const [searchValue, setSearchValue] = useState('') 
   const [searchedRepoIds, setSearchedRepoIds] = useState([])
+  const [languageIsClick, setLanguageIsClick] = useState(false)
+  const [languageSelect, setLanguageSelect] = useState('true')
+  const languageTypes = ['true', 'Javascript', 'Shell', 'Python', 'Powershell', 'HTML', 'CSS']
+  const [sortIsClick, setsortIsClick] = useState(false)
+  const [sortSelect, setSortSelect] = useState('Last Updated')
+  const sortTypes = ['Last Updated', 'Name']
 
   useEffect(() => {
     function initialize() {
@@ -67,6 +73,12 @@ function Repositories() {
   const handleSearchChange = (e) => {
     setSearchValue(e.target.value)
   }
+  const handleLanguageMenuChange = (e) => {
+    setLanguageSelect(e.target.value)
+  }
+  const handleSortMenuChange = (e) => {
+    setSortSelect(e.target.value)
+  }
 
   let content
   if (repoStatus === 'loading') {
@@ -88,21 +100,24 @@ function Repositories() {
             <Bar>
               <SearchBar name="search" value={searchValue} onChange={handleSearchChange}/>
               <ClassifyButton>
-                {/* <Button theme='main' onClick={() => { alert('hi') }}>
-                Type
-                    <DropDownIcon color={color.primary}></DropDownIcon>
-                  </Button> */}
                 <div>
-                  <Button theme='main'>
-                Language
-                    <DropDownIcon color={color.primary}></DropDownIcon>
+                  <Button theme='main' onClick={() => { setLanguageIsClick(!languageIsClick) }}>
+                    Language
+                    <DropDownIcon color={color.primary} />
                   </Button>
-                  <SelectMenu/>
+                  <SelectMenu selectType={languageSelect} types={languageTypes}
+                    onChange={handleLanguageMenuChange}
+                    className={languageIsClick ? '' : 'hide'} />
                 </div>
-                <Button theme='main'>
-                Sort
-                  <DropDownIcon color={color.primary}></DropDownIcon>
-                </Button>
+                <div>
+                  <Button theme='main' onClick={() => { setsortIsClick(!sortIsClick) }}>
+                  Sort
+                    <DropDownIcon color={color.primary} />
+                  </Button>
+                  <SelectMenu selectType={sortSelect} types={sortTypes} 
+                    onChange={handleSortMenuChange}
+                    className={sortIsClick ? '' : 'hide'} />
+                </div>
               </ClassifyButton>
             </Bar>
             <Button theme="new" className="newbutton">
