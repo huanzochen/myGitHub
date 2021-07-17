@@ -31,6 +31,7 @@ padding: 15px;
 export const WrapperTop = styled.div`
 display: flex;
 flex-direction: row;
+align-items: flex-start;
 justify-content: space-between;
 margin-bottom: 15px;
 
@@ -40,7 +41,8 @@ margin-bottom: 15px;
 
 @media ${device.mobileL} {
   flex-direction: column;
-  
+  align-items: stretch;
+
   .newbutton {
     order:-1;
   }
@@ -54,7 +56,9 @@ margin-bottom: 15px;
 export const Bar = styled.div`
 display: flex;
 flex-direction: row;
-flex-grow: 1;
+align-items: flex-start;
+width:100%;
+flex-wrap: wrap;
 
 @media ${device.mobileL} {
   flex-direction: column;
@@ -66,10 +70,10 @@ flex-grow: 1;
 `
 
 export const SearchBar = styled.input`
-flex-grow: 3;
-max-width: 600px;
+width: 100%;
+max-width: 500px;
 border: 2px solid ${border.main};
-padding: 5px;
+padding: 6px;
 border-radius: 5px;
 margin-right: 10px; 
 
@@ -79,26 +83,27 @@ margin-right: 10px;
 `
 
 export const ClassifyButton = styled.div`
-flex-grow: 1;
 display: flex;
 flex-direction: row;
 
 .hide {
   display: none;  
 }
+`
 
-button{
-  margin-left: 5px;
-  margin-right: 2px;
+export const WrapperMenu = styled.div`
+@media ${device.desktop} {
+  margin: 0px 4px 0px 0px;
 }
-
-@media ${device.mobileL} {
-  button{
-    margin-left: 0px;
-    margin-right: 3px;
-  }
+@media ${device.laptop} {
+  margin: 4px 4px 0px 0px;
 }
+`
 
+export const SelectMenuModal = styled.div`
+position: absolute;
+z-index: 99;
+background-color: ${color.white};
 `
 
 export const BorderLine = styled.div`

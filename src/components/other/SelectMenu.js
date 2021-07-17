@@ -2,27 +2,33 @@
 import classNames from 'classnames'
 import styled from 'styled-components'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCheckCircle } from '@fortawesome/free-regular-svg-icons'
+import { faCheckCircle, faTimesCircle } from '@fortawesome/free-regular-svg-icons'
 import { color, border, button } from '../../utils/color'
 
 const StyledSelectMenu = styled.div`
 display: flex;
 flex-direction: column;
-border-top: 1px solid ${border.grey};
-border-left: 1px solid ${border.grey};
-border-right: 1px solid ${border.grey};
+border-top: 1px solid ${border.main};
+border-left: 1px solid ${border.main};
+border-right: 1px solid ${border.main};
 border-radius: 5px;
+font-size: 12px;
 
 & svg,span {
-    margin: 0px 5px 0px 5px;
+  margin: 0px 5px 0px 5px;
+}
+& svg {
+  font-size: 14px;
 }
 
-svg {
-    visibility: hidden;
-    &.active {
-        visibility: visible;
-    }
-}
+`
+
+const Header = styled.header`
+display:flex;
+justify-content: space-between;
+align-items: center;
+padding: 5px;
+font-weight: 600;
 `
 
 const Label = styled.label`
@@ -30,17 +36,23 @@ display: flex;
 flex-direction: row;
 align-items: center;
 padding: 5px 100px 5px 5px;
-font-size: 12px;
-border-bottom: 1px solid ${border.grey};
+border-bottom: 1px solid ${border.main};
+
+& svg {
+    visibility: hidden;
+    &.active {
+        visibility: visible;
+    }
+}
 `
 
 function SelectMenu({
+  discription,
   selectType,
   types,
   onChange,
   className
 }) {
-
   // const [checkData, setCheckData] = useState('true')
   // const onChange = (event) => {
   //   setCheckData(event.target.value)
@@ -59,6 +71,10 @@ function SelectMenu({
 
   return (
     <StyledSelectMenu onChange={onChange} className={className}>
+      <Header>
+        <span> {discription} </span>
+        <FontAwesomeIcon icon={faTimesCircle} ></FontAwesomeIcon>
+      </Header>
       {content}
     </StyledSelectMenu>
   )    

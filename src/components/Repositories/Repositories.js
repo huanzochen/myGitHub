@@ -28,6 +28,8 @@ import {
   Bar,
   SearchBar,
   ClassifyButton,
+  WrapperMenu,
+  SelectMenuModal,
   BorderLine
 } from './StyleRepositories'
 
@@ -100,24 +102,28 @@ function Repositories() {
             <Bar>
               <SearchBar name="search" value={searchValue} onChange={handleSearchChange}/>
               <ClassifyButton>
-                <div>
+                <WrapperMenu>
                   <Button theme='main' onClick={() => { setLanguageIsClick(!languageIsClick) }}>
                     Language
                     <DropDownIcon color={color.primary} />
                   </Button>
-                  <SelectMenu selectType={languageSelect} types={languageTypes}
-                    onChange={handleLanguageMenuChange}
-                    className={languageIsClick ? '' : 'hide'} />
-                </div>
-                <div>
+                  <SelectMenuModal>
+                    <SelectMenu discription="Select Language"
+                      selectType={languageSelect} types={languageTypes}
+                      onChange={handleLanguageMenuChange}
+                      className={languageIsClick ? '' : 'hide'} />
+                  </SelectMenuModal>
+                </WrapperMenu>
+                <WrapperMenu>
                   <Button theme='main' onClick={() => { setsortIsClick(!sortIsClick) }}>
-                  Sort
+                    Sort
                     <DropDownIcon color={color.primary} />
                   </Button>
-                  <SelectMenu selectType={sortSelect} types={sortTypes} 
+                  <SelectMenu discription="Select Order"
+                    selectType={sortSelect} types={sortTypes} 
                     onChange={handleSortMenuChange}
                     className={sortIsClick ? '' : 'hide'} />
-                </div>
+                </WrapperMenu>
               </ClassifyButton>
             </Bar>
             <Button theme="new" className="newbutton">
