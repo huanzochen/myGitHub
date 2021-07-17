@@ -59,10 +59,11 @@ const StyledButton = styled.button.attrs(props => ({
 function Button ({
   theme,
   children,
-  className
+  className,
+  onClick
 }) {
   return (
-    <StyledButton theme={`${theme}`} className={className}>
+    <StyledButton theme={`${theme}`} className={className} onClick={onClick}>
       {children}
     </StyledButton>
   )

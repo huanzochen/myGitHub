@@ -10,6 +10,7 @@ import DropDownIcon from '../other/DropDownIcon'
 import Loader from '../other/Loader'
 import Repo from './Repo'
 import InfiniteScroll from '../other/InfiniteScroll'
+import SelectMenu from '../other/SelectMenu'
 
 import {
   fetchRepos,
@@ -87,14 +88,17 @@ function Repositories() {
             <Bar>
               <SearchBar name="search" value={searchValue} onChange={handleSearchChange}/>
               <ClassifyButton>
-                <Button theme='main'>
+                {/* <Button theme='main' onClick={() => { alert('hi') }}>
                 Type
-                  <DropDownIcon color={color.primary}></DropDownIcon>
-                </Button>
-                <Button theme='main'>
+                    <DropDownIcon color={color.primary}></DropDownIcon>
+                  </Button> */}
+                <div>
+                  <Button theme='main'>
                 Language
-                  <DropDownIcon color={color.primary}></DropDownIcon>
-                </Button>
+                    <DropDownIcon color={color.primary}></DropDownIcon>
+                  </Button>
+                  <SelectMenu/>
+                </div>
                 <Button theme='main'>
                 Sort
                   <DropDownIcon color={color.primary}></DropDownIcon>
