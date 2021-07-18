@@ -104,6 +104,7 @@ export const SelectMenuModal = styled.div`
 position: absolute;
 z-index: 99;
 background-color: ${color.white};
+margin: 5px 0px;
 `
 
 export const BorderLine = styled.div`

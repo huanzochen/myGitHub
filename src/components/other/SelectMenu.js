@@ -2,7 +2,7 @@
 import classNames from 'classnames'
 import styled from 'styled-components'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCheckCircle, faTimesCircle } from '@fortawesome/free-regular-svg-icons'
+import { faCheck, faTimes } from '@fortawesome/free-solid-svg-icons'
 import { color, border, button } from '../../utils/color'
 
 const StyledSelectMenu = styled.div`
@@ -18,7 +18,8 @@ font-size: 12px;
   margin: 0px 5px 0px 5px;
 }
 & svg {
-  font-size: 14px;
+  font-size: 16px;
+  color: ${color.shallow_black};
 }
 
 `
@@ -35,7 +36,7 @@ const Label = styled.label`
 display: flex;
 flex-direction: row;
 align-items: center;
-padding: 5px 100px 5px 5px;
+padding: 5px 130px 5px 5px;
 border-bottom: 1px solid ${border.main};
 
 & svg {
@@ -51,6 +52,7 @@ function SelectMenu({
   selectType,
   types,
   onChange,
+  onClose,
   className
 }) {
   // const [checkData, setCheckData] = useState('true')
@@ -63,7 +65,7 @@ function SelectMenu({
   content = types.map((data) => 
     <Label key={data} aria-checked={selectType === data ? true : false}> 
       <input type="radio" name="language" value={data} hidden="hidden"></input>
-      <FontAwesomeIcon icon={faCheckCircle} 
+      <FontAwesomeIcon icon={faCheck} 
         className={selectType === data ? classNames({ active: true }) : classNames({ active: false })}> </FontAwesomeIcon>
       <span>{data === 'true' ? 'All' : data}</span> 
     </Label>
@@ -73,7 +75,7 @@ function SelectMenu({
     <StyledSelectMenu onChange={onChange} className={className}>
       <Header>
         <span> {discription} </span>
-        <FontAwesomeIcon icon={faTimesCircle} ></FontAwesomeIcon>
+        <FontAwesomeIcon icon={faTimes} onClick={onClose} ></FontAwesomeIcon>
       </Header>
       {content}
     </StyledSelectMenu>

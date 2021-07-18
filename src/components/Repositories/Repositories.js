@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import { useRef, useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlusSquare } from '@fortawesome/free-solid-svg-icons'
@@ -16,8 +16,9 @@ import {
   fetchRepos,
   selectRepoIds,
   selectRepoIdsPart,
+  selectAllRepos,
   moreData,
-  selectAllRepos
+  changeSortType
 } from './reposSlice'
 
 import {
@@ -38,27 +39,47 @@ function Repositories() {
   const repoStatus = useSelector((state) => state.repos.repoStatus)
   const repoIds = useSelector(selectRepoIds)
   const page = useSelector((state) => state.repos.page)
+  const repoSort = useSelector(state => state.repos.repoSort)
   const repoIdsPart = useSelector((state) => selectRepoIdsPart(state, page))
   const allRepos = useSelector(selectAllRepos)
+  const closeLanguageSelect = useRef(null)
+  const closeSortSelect = useRef(null)
 
   const [hasMoreData, setHasMoreData] = useState(false)
   const [searchValue, setSearchValue] = useState('') 
   const [searchedRepoIds, setSearchedRepoIds] = useState([])
   const [languageIsClick, setLanguageIsClick] = useState(false)
   const [languageSelect, setLanguageSelect] = useState('true')
-  const languageTypes = ['true', 'Javascript', 'Shell', 'Python', 'Powershell', 'HTML', 'CSS']
-  const [sortIsClick, setsortIsClick] = useState(false)
+  const languageTypes = ['true', 'JavaScript', 'Shell', 'Python', 'Powershell', 'HTML', 'CSS']
+  const [sortIsClick, setSortIsClick] = useState(false)
   const [sortSelect, setSortSelect] = useState('Last Updated')
   const sortTypes = ['Last Updated', 'Name']
 
+  const handleCloseOutside = (ref, ref2) => {
+    useEffect(() => {
+      function handleClickOutside(event) {
+        if (ref.current && !ref.current.contains(event.target) && languageIsClick) setLanguageIsClick(!languageIsClick)
+        if (ref2.current && !ref2.current.contains(event.target) && sortIsClick) setSortIsClick(!sortIsClick)
+      }
+      // Bind event Listener
+      document.addEventListener('click', handleClickOutside)
+      return () => {
+        // unbind the event listener to clean up
+        document.removeEventListener('click', handleClickOutside)
+      }
+    }, [ref, languageIsClick, sortIsClick])
+  }
+  handleCloseOutside(closeLanguageSelect, closeSortSelect)
+
   useEffect(() => {
     function initialize() {
-      if (repoStatus === 'idle') {
-        dispatch(fetchRepos())
-      }
+      console.log('init')
+      // if (repoStatus === 'idle') {
+      dispatch(fetchRepos(repoSort))
+      // }
     }
     initialize()
-  })
+  }, [repoIds, repoSort])
 
   useEffect(() => {
     repoIds.length > repoIdsPart.length ? setHasMoreData(true) : setHasMoreData(false)
@@ -68,9 +89,16 @@ function Repositories() {
     const re = new RegExp(searchValue.toLowerCase(), 'g')
     const searchResultIds = allRepos.filter((data) => {
       return data.name.toLowerCase().match(re)
+    }).filter(data => {
+      if (languageSelect === 'true') return true
+      else {
+        if (data.language) { return data.language.toLowerCase().match(languageSelect.toLowerCase()) } 
+      }
+      return false
     }).map((data) => data.id)
+    console.log(searchResultIds)
     setSearchedRepoIds(searchResultIds)
-  }, [searchValue, setSearchValue, allRepos, setSearchedRepoIds])
+  }, [searchValue, languageSelect, allRepos, setSearchedRepoIds])
 
   const handleSearchChange = (e) => {
     setSearchValue(e.target.value)
@@ -78,8 +106,15 @@ function Repositories() {
   const handleLanguageMenuChange = (e) => {
     setLanguageSelect(e.target.value)
   }
+  const handleLanguageMenuClose = () => {
+    setLanguageIsClick(!languageIsClick)
+  }
   const handleSortMenuChange = (e) => {
     setSortSelect(e.target.value)
+    dispatch(changeSortType(e.target.value))
+  }
+  const handleSortMenuClose = (e) => {
+    setSortIsClick(!sortIsClick)
   }
 
   let content
@@ -103,26 +138,30 @@ function Repositories() {
               <SearchBar name="search" value={searchValue} onChange={handleSearchChange}/>
               <ClassifyButton>
                 <WrapperMenu>
-                  <Button theme='main' onClick={() => { setLanguageIsClick(!languageIsClick) }}>
+                  <Button theme='main' onClick={handleLanguageMenuClose}>
                     Language
                     <DropDownIcon color={color.primary} />
                   </Button>
-                  <SelectMenuModal>
+                  <SelectMenuModal ref={closeLanguageSelect}>
                     <SelectMenu discription="Select Language"
                       selectType={languageSelect} types={languageTypes}
                       onChange={handleLanguageMenuChange}
+                      onClose={handleLanguageMenuClose}
                       className={languageIsClick ? '' : 'hide'} />
                   </SelectMenuModal>
                 </WrapperMenu>
                 <WrapperMenu>
-                  <Button theme='main' onClick={() => { setsortIsClick(!sortIsClick) }}>
+                  <Button theme='main' onClick={handleSortMenuClose}>
                     Sort
                     <DropDownIcon color={color.primary} />
                   </Button>
-                  <SelectMenu discription="Select Order"
-                    selectType={sortSelect} types={sortTypes} 
-                    onChange={handleSortMenuChange}
-                    className={sortIsClick ? '' : 'hide'} />
+                  <SelectMenuModal ref={closeSortSelect}>
+                    <SelectMenu discription="Select Order"
+                      selectType={sortSelect} types={sortTypes} 
+                      onChange={handleSortMenuChange}
+                      onClose={handleSortMenuClose}
+                      className={sortIsClick ? '' : 'hide'} />
+                  </SelectMenuModal>
                 </WrapperMenu>
               </ClassifyButton>
             </Bar>
@@ -135,7 +174,12 @@ function Repositories() {
         </WrapperTopContainer>
 
         {(() => {
-          if (searchValue === '') {
+          if (searchValue !== '' || languageSelect !== 'true') { 
+            return (
+              searchedRepoIds.map((repoId) => <Repo key={repoId} repoId={repoId} type="normal"> </Repo>)
+            )
+          }
+          else if (searchValue === '') {
             return (
               <InfiniteScroll
                 dataLength={repoIdsPart}
@@ -149,15 +193,8 @@ function Repositories() {
               </InfiniteScroll>
             )
           } 
-          else { 
-            return (
-              searchedRepoIds.map((repoId) => <Repo key={repoId} repoId={repoId} type="normal"> </Repo>)
-            )
-          }
         })()
         }
-
-
       </Container>
     </StyledRepositories>
   )
