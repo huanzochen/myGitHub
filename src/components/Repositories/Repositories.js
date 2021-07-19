@@ -17,8 +17,7 @@ import {
   selectRepoIds,
   selectRepoIdsPart,
   selectAllRepos,
-  moreData,
-  changeSortType
+  moreData
 } from './reposSlice'
 
 import {
@@ -39,7 +38,6 @@ function Repositories() {
   const repoStatus = useSelector((state) => state.repos.repoStatus)
   const repoIds = useSelector(selectRepoIds)
   const page = useSelector((state) => state.repos.page)
-  const repoSort = useSelector(state => state.repos.repoSort)
   const repoIdsPart = useSelector((state) => selectRepoIdsPart(state, page))
   const allRepos = useSelector(selectAllRepos)
   const closeLanguageSelect = useRef(null)
@@ -71,15 +69,20 @@ function Repositories() {
   }
   handleCloseOutside(closeLanguageSelect, closeSortSelect)
 
+  /**
+   * 這邊的 useEffects skipping Effects 在考慮設定成 
+   * 1. [repoIds] 每次 repoIds 變更時才會跑
+   * 2. [] 只會跑一次 
+   *  */ 
   useEffect(() => {
     function initialize() {
-      console.log('init')
-      // if (repoStatus === 'idle') {
-      dispatch(fetchRepos(repoSort))
-      // }
+      console.log('init fetch repos data...')
+      if (repoStatus === 'idle') {
+        dispatch(fetchRepos())
+      }
     }
     initialize()
-  }, [repoIds, repoSort])
+  }, [repoIds]) 
 
   useEffect(() => {
     repoIds.length > repoIdsPart.length ? setHasMoreData(true) : setHasMoreData(false)
@@ -95,10 +98,12 @@ function Repositories() {
         if (data.language) { return data.language.toLowerCase().match(languageSelect.toLowerCase()) } 
       }
       return false
+    }).sort(function(a, b) {
+      if (sortSelect === 'Last Updated') return a.updated_at > b.updated_at
+      else if (sortSelect === 'Name') return a.name.localeCompare(b.name)
     }).map((data) => data.id)
-    console.log(searchResultIds)
     setSearchedRepoIds(searchResultIds)
-  }, [searchValue, languageSelect, allRepos, setSearchedRepoIds])
+  }, [searchValue, languageSelect, sortSelect, allRepos])
 
   const handleSearchChange = (e) => {
     setSearchValue(e.target.value)
@@ -111,7 +116,6 @@ function Repositories() {
   }
   const handleSortMenuChange = (e) => {
     setSortSelect(e.target.value)
-    dispatch(changeSortType(e.target.value))
   }
   const handleSortMenuClose = (e) => {
     setSortIsClick(!sortIsClick)
@@ -174,7 +178,7 @@ function Repositories() {
         </WrapperTopContainer>
 
         {(() => {
-          if (searchValue !== '' || languageSelect !== 'true') { 
+          if (searchValue !== '' || languageSelect !== 'true' || sortSelect !== 'Last Updated') { 
             return (
               searchedRepoIds.map((repoId) => <Repo key={repoId} repoId={repoId} type="normal"> </Repo>)
             )

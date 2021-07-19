@@ -8,30 +8,20 @@ const reposAdapter = createEntityAdapter()
 const initialState = reposAdapter.getInitialState({
   repoStatus: 'idle',
   page: 1,
-  repoSort: 'updated',
   error: 'null'
 })
 
-export const fetchRepos = createAsyncThunk('repos/fetchRepos', async(repoSort) => {
-  console.log(`repoSort = ${repoSort}`)
+export const fetchRepos = createAsyncThunk('repos/fetchRepos', async() => {
   let headersList = {
     'Accept': 'application/vnd.github.v3+json',
     'User-Agent': 'Thunder Client (https://www.thunderclient.io)'
   }
-  switch (repoSort) {
-  case 'Last Updated':
-    const response = await fetch('https://api.github.com/users/huanzochen/repos?sort=updated&per_page=100', {
-      method: 'GET',
-      headers: headersList
-    })
-    return await response.json()
-  case 'Name':
-    const response2 = await fetch('https://api.github.com/users/huanzochen/repos?sort=full_name&per_page=100', {
-      method: 'GET',
-      headers: headersList
-    })
-    return await response2.json()
-  }
+
+  const response = await fetch('https://api.github.com/users/huanzochen/repos?sort=updated&per_page=100', {
+    method: 'GET',
+    headers: headersList
+  })
+  return await response.json()
 })
 
 const reposSlice = createSlice({
@@ -41,11 +31,6 @@ const reposSlice = createSlice({
     moreData: {
       reducer(state, action) {
         state.page++
-      }
-    },
-    changeSortType: {
-      reducer(state, action) {
-        state.repoSort = action.payload
       }
     }
   },
@@ -64,7 +49,7 @@ const reposSlice = createSlice({
   }
 })
 
-export const { moreData, changeSortType } = reposSlice.actions
+export const { moreData } = reposSlice.actions
 
 export default reposSlice.reducer
 
