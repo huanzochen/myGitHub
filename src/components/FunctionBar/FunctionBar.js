@@ -25,14 +25,14 @@ function FunctionBar({
           <FontAwesomeIcon icon={faFolderOpen}></FontAwesomeIcon>
           <p className='wrapper'>Repositories</p>
         </FunctionButton>
-        <FunctionButton>
+        {/* <FunctionButton>
           <FontAwesomeIcon icon={faProjectDiagram}></FontAwesomeIcon>
           <p className='wrapper'>Projects</p>
         </FunctionButton>
         <FunctionButton>
           <FontAwesomeIcon icon={faCubes}></FontAwesomeIcon>
           <p className='wrapper'>Package</p>
-        </FunctionButton>
+        </FunctionButton> */}
 
       </Container>
     </StyledFunctionBar>

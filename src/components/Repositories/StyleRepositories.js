@@ -3,22 +3,7 @@ import { color, border } from '../../utils/color'
 import { device } from '../../utils/device'
 
 export const StyledRepositories = styled.div`
-width: 75%;
 
-.mobile {
-  display: none;
-}
-
-@media ${device.mobileL} {
-width: 100%;
-  .mobile {
-    display: block;
-    overflow-x: auto;
-    .container {
-      justify-content: flex-start;
-    }
-  }
-}
 `
 
 export const Container = styled.div`
