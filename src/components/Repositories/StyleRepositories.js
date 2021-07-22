@@ -3,7 +3,6 @@ import { color, border } from '../../utils/color'
 import { device } from '../../utils/device'
 
 export const StyledRepositories = styled.div`
-
 `
 
 export const Container = styled.div`

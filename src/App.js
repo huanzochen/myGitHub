@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import NavBar from './components/NavBar/NavBar'
 import FunctionBar from './components/FunctionBar/FunctionBar'
 import Profile from './components/Profile/Profile'
+import Overview from './components/Overview/Overview'
 import Repositories from './components/Repositories/Repositories'
 import { device } from './utils/device'
 
@@ -74,7 +75,8 @@ function App() {
             <Profile></Profile>
             <MainPageRight>
               <Switch>
-                <Route path="/" exact component={Repositories} ></Route>
+                <Route path="/" exact component={Overview} ></Route>
+                <Route path="/repositories" exact component={Repositories} ></Route>
               </Switch>
             </MainPageRight>
           </Container>
