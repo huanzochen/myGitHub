@@ -12,6 +12,7 @@ import {
 } from './StyleFunctionBar'
 
 import {
+  changeSelected,
   selectOverview,
   selectRepositories
 } from './functionbarSlice'
@@ -36,15 +37,7 @@ function FunctionBar({
     }]
 
   const handleButtonClick = (event) => {
-    console.log(event.target.closest('div').id)
-    switch (event.target.closest('div').id) {
-    case 'Overview': 
-      dispatch(selectOverview())
-      break
-    case 'Repositories':
-      dispatch(selectRepositories())
-      break
-    }
+    dispatch(changeSelected(event.target.closest('div').id))
   }
 
   let content 

@@ -8,19 +8,14 @@ const functionbarSlice = createSlice({
   name: 'functionbar',
   initialState,
   reducers: {
-    selectOverview: {
+    changeSelected: {
       reducer: (state, action) => {
-        state.functionSelected = 'Overview'
-      }
-    },
-    selectRepositories: {
-      reducer: (state, action) => {
-        state.functionSelected = 'Repositories'
+        state.functionSelected = action.payload
       }
     }
   }
 })
 
-export const { selectOverview, selectRepositories } = functionbarSlice.actions
+export const { changeSelected } = functionbarSlice.actions
 
 export default functionbarSlice.reducer
