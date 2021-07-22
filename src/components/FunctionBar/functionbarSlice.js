@@ -5,22 +5,22 @@ const initialState = {
 }
 
 const functionbarSlice = createSlice({
-  name: 'functionBar',
+  name: 'functionbar',
   initialState,
   reducers: {
-    selectRepositories: {
-      reducer: (state, action) => {
-        state.functionSelected = 'Repositories'
-      }
-    },
     selectOverview: {
       reducer: (state, action) => {
         state.functionSelected = 'Overview'
+      }
+    },
+    selectRepositories: {
+      reducer: (state, action) => {
+        state.functionSelected = 'Repositories'
       }
     }
   }
 })
 
-export const { selectRepositories, selectOverview } = functionbarSlice.actions
+export const { selectOverview, selectRepositories } = functionbarSlice.actions
 
 export default functionbarSlice.reducer

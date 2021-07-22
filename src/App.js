@@ -67,9 +67,9 @@ width: 100%;
 function App() {
   return (
     <StyledApp>
-      <NavBar></NavBar>
-      <FunctionBar StyledFunctionBarClassName="desktop" ContainerClassName="container"></FunctionBar>
       <Router>
+        <NavBar></NavBar>
+        <FunctionBar StyledFunctionBarClassName="desktop" ContainerClassName="container"></FunctionBar>
         <MainPage>
           <Container>
             <Profile></Profile>

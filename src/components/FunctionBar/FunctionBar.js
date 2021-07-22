@@ -1,11 +1,9 @@
-import styled from 'styled-components'
-import { useRef, useState, useEffect } from 'react'
-import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom'
+import { useSelector, useDispatch } from 'react-redux'
+import { BrowserRouter as Router, Switch, Route, Redirect, Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBookReader } from '@fortawesome/free-solid-svg-icons'
 import { faFolderOpen } from '@fortawesome/free-solid-svg-icons'
 import { faProjectDiagram } from '@fortawesome/free-solid-svg-icons'
-import { faCubes } from '@fortawesome/free-solid-svg-icons'
 
 import {
   StyledFunctionBar,
@@ -13,56 +11,57 @@ import {
   FunctionButton
 } from './StyleFunctionBar'
 
+import {
+  selectOverview,
+  selectRepositories
+} from './functionbarSlice'
+
 function FunctionBar({
   StyledFunctionBarClassName,
   ContainerClassName
 }) {
+  const dispatch = useDispatch()
+  const selectedFunction = useSelector(state => state.functionbar.functionSelected)
 
-  const refOverviewButtonHref = useRef(null)
-  const refRepositoriesButtonHref = useRef(null)
-  useEffect(() => {
-    if (refOverviewButtonHref && refOverviewButtonHref.current) {
-      const handleOverviewButton = () => {
-        window.location.href = '/'
-      }
-      refOverviewButtonHref.current.addEventListener('click', handleOverviewButton)
-      return () => {
-        refOverviewButtonHref.current.removeEventListener('click', handleOverviewButton)
-      }
+  const functions = [
+    {
+      name: 'Overview',
+      icon: faBookReader,
+      url: '/'
+    },
+    { 
+      name: 'Repositories',
+      icon: faFolderOpen,
+      url: '/repositories'
+    }]
+
+  const handleButtonClick = (event) => {
+    console.log(event.target.closest('div').id)
+    switch (event.target.closest('div').id) {
+    case 'Overview': 
+      dispatch(selectOverview())
+      break
+    case 'Repositories':
+      dispatch(selectRepositories())
+      break
     }
-  })
-  useEffect(() => {
-    if (refRepositoriesButtonHref && refRepositoriesButtonHref.current) {
-      const handleRepositoriesButton = () => {
-        window.location.href = '/repositories'
-      }
-      refRepositoriesButtonHref.current.addEventListener('click', handleRepositoriesButton)
-      return () => {
-        refRepositoriesButtonHref.current.removeEventListener('click', handleRepositoriesButton)
-      }
-    }
+  }
+
+  let content 
+
+  content = functions.map((func) => {
+    return <Link key={func.name} to={func.url}>
+      <FunctionButton selected={selectedFunction === func.name ? true : false} onClick={handleButtonClick} id={func.name}>
+        <FontAwesomeIcon icon={func.icon}></FontAwesomeIcon>
+        <span> {func.name} </span>
+      </FunctionButton>
+    </Link>
   })
 
   return (
     <StyledFunctionBar className={StyledFunctionBarClassName}>
       <Container className={ContainerClassName}>
-        <FunctionButton ref={refOverviewButtonHref}>
-          <FontAwesomeIcon icon={faBookReader}></FontAwesomeIcon>
-          <p className='wrapper'>Overview</p>
-        </FunctionButton>
-        <FunctionButton ref={refRepositoriesButtonHref} selected={true}>
-          <FontAwesomeIcon icon={faFolderOpen}></FontAwesomeIcon>
-          <p className='wrapper'>Repositories</p>
-        </FunctionButton>
-        {/* <FunctionButton>
-          <FontAwesomeIcon icon={faProjectDiagram}></FontAwesomeIcon>
-          <p className='wrapper'>Projects</p>
-        </FunctionButton>
-        <FunctionButton>
-          <FontAwesomeIcon icon={faCubes}></FontAwesomeIcon>
-          <p className='wrapper'>Package</p>
-        </FunctionButton> */}
-
+        {content}
       </Container>
     </StyledFunctionBar>
   )
