@@ -11,15 +11,15 @@ const StyledOverview = styled.div`
 const Containter = styled.div`
 display:flex;
 justify-content: space-between;
+flex-wrap: wrap;
 & > div {
-  
+  margin: 25px;
 };
-padding: 10px;
-background-color: darkgreen;
+background-color: ${color.main};
 `
 
 const Portfolio = styled.div`
-padding: 100px;
+padding: 20%;
 background-color: darkred;
 `
 
@@ -28,6 +28,15 @@ function Overview() {
   return (
     <StyledOverview>
       <Containter>
+        <Portfolio>
+
+
+
+
+        </Portfolio>
+        
+        <Portfolio></Portfolio>
+        <Portfolio></Portfolio>
         <Portfolio></Portfolio>
             
       </Containter>

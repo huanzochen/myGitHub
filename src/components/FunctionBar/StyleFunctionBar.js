@@ -7,6 +7,11 @@ border-bottom: 1px solid ${border.main};
 `
 export const Container = styled.div`
 display:flex;
+
+& a{
+  text-decoration: none;
+  color: ${color.black};
+}
 `
 
 export const FunctionButton = styled.div`
