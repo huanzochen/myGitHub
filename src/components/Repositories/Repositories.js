@@ -169,10 +169,10 @@ function Repositories() {
                 </WrapperMenu>
               </ClassifyButton>
             </Bar>
-            <Button theme="new" className="newbutton">
+            {/* <Button theme="new" className="newbutton">
               <FontAwesomeIcon icon={faPlusSquare} className='wrapper'></FontAwesomeIcon>
               New
-            </Button>
+            </Button> */}
           </WrapperTop>
           <BorderLine/>
         </WrapperTopContainer>

@@ -6,6 +6,7 @@
 5. ~~已完成 SelectMenu 做好功能 但無法做到 github 的 details-overlay (全螢幕覆蓋式關閉)~~ 
 6. searchedRepoIds 沒有 InfiniteScroll (預設有 search 的話就不會有很多結果 所以目前沒做這功能)
 7. SearchBar 點搜尋筐會自動放大的問題.
+7. SelectMenu 沒有 pointer-event!
 
 
 ### Thinking
