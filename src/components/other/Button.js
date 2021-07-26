@@ -23,6 +23,8 @@ const StyledButton = styled.button.attrs(props => ({
     switch (props.theme) {
     case 'main':
       return 'inherit'
+    case 'url':
+      return `${color.second}`
     case 'new':
       return `${color.second}`
     default:
@@ -34,6 +36,8 @@ const StyledButton = styled.button.attrs(props => ({
     switch (props.theme) {
     case 'main':
       return `radial-gradient(${button.main}e0, ${button.main}e9, ${button.main} )`
+    case 'url': 
+      return `radial-gradient(${button.url}e0 , ${button.url}e9 , ${button.url} )`
     case 'new': 
       return `radial-gradient(${button.add}e0 , ${button.add}e9 , ${button.add} )`
     default:

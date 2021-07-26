@@ -13,10 +13,11 @@ export const border = {
   main: '#ececec',
   green: '#30942c',
   grey: '#d4d3d3',
-  dark: '#969292',
+  dark: '#969292'
 }
 
 export const button = {
   main: '#f7f7f7',
   add: '#2ea44f',
+  url: '#1e68f3'
 }
