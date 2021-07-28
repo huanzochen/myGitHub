@@ -14,7 +14,6 @@ const StyledButton = styled.button.attrs(props => ({
     font-size: 13px;
     font-weight: 600;
     font-family: system-ui;
-    border-radius: 5px;
     text-decoration: none;
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -37,7 +36,7 @@ const StyledButton = styled.button.attrs(props => ({
     case 'main':
       return `radial-gradient(${button.main}e0, ${button.main}e9, ${button.main} )`
     case 'url': 
-      return `radial-gradient(${button.url}e0 , ${button.url}e9 , ${button.url} )`
+      return `${button.dark}40`
     case 'new': 
       return `radial-gradient(${button.add}e0 , ${button.add}e9 , ${button.add} )`
     default:
@@ -49,6 +48,8 @@ const StyledButton = styled.button.attrs(props => ({
     switch (props.theme) {
     case 'main':
       return `1.5px solid ${border.grey}`
+    case 'url': 
+      return `1.5px solid ${border.grey}`
     case 'new':
       return `1.5px solid ${border.green}`
     default:
@@ -56,7 +57,25 @@ const StyledButton = styled.button.attrs(props => ({
     }
   }};
 
-  box-shadow: 0px 1px ${border.main}aa;
+  border-radius: ${props => {
+    switch (props.theme) {
+    case 'main':
+      return '5px'
+    case 'new':
+      return '5px'
+    case 'url':
+      return '20px'
+    }
+  }};
+
+  box-shadow: ${props => {
+    switch (props.theme) {
+    case 'url':
+      return 'none'
+    default:
+      return `0px 1px ${border.main}aa`
+    }
+  }};
 
 `
 

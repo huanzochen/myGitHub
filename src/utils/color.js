@@ -3,7 +3,7 @@ export const color = {
   primary: 'palevioletred',
   // primary: 'trasperent',
   second: 'white',
-  white: 'white',
+  white: '#ffffff',
   shallow_black: '#5f5f5f',
   black: 'black',
   pink: 'palevioletred'
@@ -19,5 +19,5 @@ export const border = {
 export const button = {
   main: '#f7f7f7',
   add: '#2ea44f',
-  url: '#1e68f3'
+  dark: '#969292'
 }
