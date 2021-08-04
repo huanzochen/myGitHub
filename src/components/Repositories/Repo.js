@@ -59,7 +59,7 @@ function Repo ({ repoId, type }) {
             </Type>
           </Main>
           <Info>
-            <Button> 
+            <Button theme='main'> 
               <FontAwesomeIcon icon={faStar} className='wrapper'></FontAwesomeIcon>
               Star 
             </Button>

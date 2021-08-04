@@ -25,7 +25,7 @@ flex-direction: column;
 align-items: flex-start;
 padding: 15px;
 
-background-color: darkred;
+/* background-color: ${color.third}40; */
 border-radius: 10px;
 border: 1px solid ${border.grey};
 `
@@ -47,7 +47,7 @@ export const Avatar = styled.img.attrs(props => ({
 `
 
 export const Title = styled.div`
-color: ${color.white};
+color: ${color.primary};
 font-size: 25px;
 font-weight: 600;
 padding: 50px 10px 5px 10px;
@@ -57,7 +57,7 @@ export const SubTitle = styled.div`
 padding: 5px 10px 10px 10px;
 & span {
     font-size: 20px;
-    color: ${color.white}d0;
+    color: ${color.primary}d0;
     margin-right: 5px;
 }
 

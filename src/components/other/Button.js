@@ -23,7 +23,7 @@ const StyledButton = styled.button.attrs(props => ({
     case 'main':
       return 'inherit'
     case 'url':
-      return `${color.second}`
+      return `${color.third}c8`
     case 'new':
       return `${color.second}`
     default:
@@ -36,7 +36,7 @@ const StyledButton = styled.button.attrs(props => ({
     case 'main':
       return `radial-gradient(${button.main}e0, ${button.main}e9, ${button.main} )`
     case 'url': 
-      return `${button.dark}40`
+      return `${button.dark}10`
     case 'new': 
       return `radial-gradient(${button.add}e0 , ${button.add}e9 , ${button.add} )`
     default:
@@ -76,6 +76,11 @@ const StyledButton = styled.button.attrs(props => ({
       return `0px 1px ${border.main}aa`
     }
   }};
+
+&:hover{
+  cursor: pointer;
+  background:${button.dark}20;
+}
 
 `
 

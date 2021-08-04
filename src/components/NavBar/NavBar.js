@@ -4,7 +4,7 @@ import classNames from 'classnames'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAndroid } from '@fortawesome/free-brands-svg-icons'
 import { faBell } from '@fortawesome/free-regular-svg-icons'
-import { faPlus, faHamburger } from '@fortawesome/free-solid-svg-icons'
+import { faPlus, faBars } from '@fortawesome/free-solid-svg-icons'
 
 import { color, border } from '../../utils/color'
 import DropDownIcon from '../other/DropDownIcon'
@@ -44,7 +44,7 @@ function NavBar() {
     <StyledNavBar>
       <Container>
         <div className="menu" onClick={handleClick}>
-          <FontAwesomeIcon icon={faHamburger} className="icon medium"></FontAwesomeIcon>
+          <FontAwesomeIcon icon={faBars} className="icon medium"></FontAwesomeIcon>
         </div>
         <div className="logo">
           <FontAwesomeIcon icon={faAndroid} className="icon big"></FontAwesomeIcon>

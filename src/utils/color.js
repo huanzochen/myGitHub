@@ -1,12 +1,13 @@
 export const color = {
   // primary: '#1b1b1be1',
-  primary: 'palevioletred',
+  primary: '#db7093',
   // primary: 'trasperent',
   second: 'white',
+  third: '#1855FC',
   white: '#ffffff',
   shallow_black: '#5f5f5f',
   black: 'black',
-  pink: 'palevioletred'
+  pink: '#db7093'
 }
 
 export const border = {
