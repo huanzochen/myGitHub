@@ -12,7 +12,7 @@ const StyledButton = styled.button.attrs(props => ({
     align-items: center;
     padding: 6px 16px;
     font-size: 13px;
-    font-weight: 600;
+    font-weight: 700;
     font-family: system-ui;
     text-decoration: none;
     -webkit-appearance: none;

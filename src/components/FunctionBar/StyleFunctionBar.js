@@ -21,7 +21,7 @@ font-weight: 600;
 padding: 16px 15px 16px 15px;
 border-bottom: 2px solid ${props => {
   // 如果遇到選擇的標籤就用 important 強制設定顏色,暫時想不到更好的解法
-    if (props.selected) return color.pink + ' !important'
+    if (props.selected) return color.primary + ' !important'
     else { return 'transparent' }
   }}; 
 & > span{

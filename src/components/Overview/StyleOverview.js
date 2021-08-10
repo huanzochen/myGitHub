@@ -11,10 +11,11 @@ a {
 
 export const Container = styled.div`
 display:flex;
+flex-direction: column;
 justify-content: flex-start;
 flex-wrap: wrap;
 & > div {
-  margin: 25px;
+  margin: 15px;
 };
 background-color: ${color.main};
 `
@@ -25,9 +26,8 @@ flex-direction: column;
 align-items: flex-start;
 padding: 15px;
 
-/* background-color: ${color.third}40; */
 border-radius: 10px;
-border: 1px solid ${border.grey};
+border: 1px solid ${border.primary}40;
 `
 
 export const Information = styled.div`
@@ -53,8 +53,17 @@ font-weight: 600;
 padding: 50px 10px 5px 10px;
 `
 
+export const Discription = styled.div`
+padding: 5px 10px 5px 10px;
+& span {
+    font-size: 20px;
+    color: ${color.primary}d0;
+    margin-right: 5px;
+}
+`
+
 export const SubTitle = styled.div`
-padding: 5px 10px 10px 10px;
+padding: 5px 10px 5px 10px;
 & span {
     font-size: 20px;
     color: ${color.primary}d0;
