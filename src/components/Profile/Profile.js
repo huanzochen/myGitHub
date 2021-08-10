@@ -1,4 +1,5 @@
 import { useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import styled from 'styled-components'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -60,7 +61,9 @@ function Profile() {
           </Name>
         </WrapperUser>
         <Button theme='main'>
-          Edit Profile
+          <Link to={{ pathname: 'https://github.com/huanzochen' }} target="_blank">
+            MyProfile
+          </Link>
         </Button>
         <ProfileLabel type="description">
           <FontAwesomeIcon icon={faUsers} className='icon-wrapper'></FontAwesomeIcon>
@@ -85,11 +88,15 @@ function Profile() {
           <Achievement src={userData.avatar_url}/>
         </ProfileLabel>
         <BorderLine/> */}
-        <ProfileLabel type='achievment'>
+        {/* <ProfileLabel type='achievment'>
           <span className='title'>Organizations</span>
           {
             userOrganization.map((org) => <Organizations key={org.id} src={org.avatar_url}/>)
           }
+        </ProfileLabel> */}
+        <ProfileLabel type='achievment'>
+          <span className='title'>About Me</span>
+          <p>  </p>
         </ProfileLabel>
       </Container>
     </StyledProfile>

@@ -47,7 +47,7 @@ export const Container = styled.div`
 display: flex;
 flex-direction: row;
 align-items: center;
-padding: 20px 30px 20px 30px;
+padding: 15px 30px 15px 30px;
 
 img {
   margin-left: 19px;
@@ -84,13 +84,11 @@ input,a {
 }
 `
 
-export const Input = styled.input.attrs(props => ({
-  size: props.size || '10px'
-}))
-`
-border: 2px solid ${color.pink};
-border-radius: 8px;
-padding: ${props => props.size};
+export const Input = styled.input`
+background-color: ${color.white}20;
+border: 1px solid ${border.main}c0;
+border-radius: 6px;
+padding: 8px 10px 8px 10px;
   
   :focus{
     outline:none

@@ -11,6 +11,7 @@ import {
   Information,
   Avatar,
   Title,
+  Discription,
   SubTitle
 } from './StyleOverview'
 
@@ -20,18 +21,25 @@ const PortfolioDatas = [
   {
     name: 'ziquanh19-github',
     url: 'https://ziquanh19-github.herokuapp.com/',
+    discription: 'About me and my repos using github API.',
     subject: ['css', 'javasript']
   },
   { 
     name: 'login-page-flex',
     url: 'https://login-page-flex.herokuapp.com/',
+    discription: 'A login mockup page used built with flex css.',
     subject: ['css']
+  },
+  { 
+    name: 'js-playground',
+    url: 'https://github.com/huanzochen/js_playground.git/',
+    discription: 'A playground for practicing js.',
+    subject: ['js']
   }
 ]
 
 let content 
 content = PortfolioDatas.map((data) => {
-
   return (
     <Portfolio key={data.name}>
       <Information>
@@ -42,6 +50,7 @@ content = PortfolioDatas.map((data) => {
       </Information>
 
       <Title> {data.name} </Title>
+      <Discription> {data.discription} </Discription>
       <SubTitle>
         {(() => {
           return data.subject.map((skill, index) => {
@@ -57,7 +66,6 @@ content = PortfolioDatas.map((data) => {
 })
 
 function Overview() {
-
   return (
     <StyledOverview>
       <Container>
@@ -65,7 +73,6 @@ function Overview() {
       </Container>
     </StyledOverview>
   )
-
 }
 
 export default Overview

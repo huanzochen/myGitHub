@@ -1,6 +1,6 @@
 export const color = {
   // primary: '#1b1b1be1',
-  primary: '#db7093',
+  primary: '#3C3EB4',
   // primary: 'trasperent',
   second: 'white',
   third: '#1855FC',
@@ -11,6 +11,7 @@ export const color = {
 }
 
 export const border = {
+  primary: '#3C3EB4',
   main: '#ececec',
   green: '#30942c',
   grey: '#d4d3d3',
