@@ -21,8 +21,8 @@ const PortfolioDatas = [
   {
     name: 'ziquanh19-github',
     url: 'https://ziquanh19-github.herokuapp.com/',
-    discription: 'About me and my repos using github API.',
-    subject: ['css', 'javasript']
+    discription: 'A personal website inspired by github with github API implemented. This project is focusing on improve css layout skills without ui library, both the first try on styled-components.',
+    subject: ['css flex', 'styled-components']
   },
   { 
     name: 'login-page-flex',

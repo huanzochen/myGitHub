@@ -96,7 +96,7 @@ function Profile() {
         </ProfileLabel> */}
         <ProfileLabel type='achievment'>
           <span className='title'>About Me</span>
-          <p>  </p>
+          <p> A ship in harbor is safe, but that is not what ships are built for. </p>
         </ProfileLabel>
       </Container>
     </StyledProfile>

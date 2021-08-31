@@ -15,7 +15,7 @@ flex-direction: column;
 justify-content: flex-start;
 flex-wrap: wrap;
 & > div {
-  margin: 25px;
+  margin: 15px;
 };
 background-color: ${color.main};
 `
